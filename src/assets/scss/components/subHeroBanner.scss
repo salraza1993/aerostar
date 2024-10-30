@@ -1,0 +1,37 @@
+@import './../mixins/common-mixins';
+.hero-banner-section {
+  --banner-height: 200px;
+  --block-content-color: var(--bs-white);
+  position: relative;
+  width: 100%;
+  padding: calc(0.5rem + 0.5vw);
+  padding-inline: var(--fluid-container-padding);
+  color: var(--block-content-color);
+
+  .hero-banner-content {
+    position: relative;
+    width: 100%;
+    min-height: var(--banner-height);
+    display: flex;
+    align-items: center;
+    .hero-banner-image {
+      position: absolute;
+      inset: 0;
+      border-radius: calc(var(--border-radius) * 2);
+      @include objectFit();
+      &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to left, rgba(var(--bs-dark-rgb), 0) 0%, rgba(var(--bs-dark-rgb), 0.75) 100%);
+      }
+    }
+    .container {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+  }
+}

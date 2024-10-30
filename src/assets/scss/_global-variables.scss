@@ -1,0 +1,24 @@
+:root {
+  --fluid-container-padding: calc(1.5rem + 2vw);
+  --max-z-index: 10;
+  --header-height: 70px;
+  --font-size-small: clamp(0.6247rem, 0.5523rem + 0.3622vw, 0.833rem);
+  --font-size-normal: clamp(1rem, 0.7566rem + 0.55vw, 1.15rem);
+  --font-size-6: clamp(0.9375rem, 0.8288rem + 0.5435vw, 1.25rem);
+  --font-size-5: clamp(1.1484rem, 1.0153rem + 0.6658vw, 1.5313rem);
+  --font-size-4: clamp(1.4068rem, 1.2437rem + 0.8156vw, 1.8758rem);
+  --font-size-3: clamp(1.7234rem, 1.5236rem + 0.9991vw, 2.2978rem);
+  --font-size-2: clamp(2.1111rem, 1.8664rem + 1.2238vw, 2.8148rem);
+  --font-size-1: clamp(2.5861rem, 2.2863rem + 1.4992vw, 3.4482rem);
+  --transparent: transparent;
+  --transition: all 0.35s ease;
+  --border-radius: 0.35rem;
+  --box-shadow:
+      0px 1.7px 1.1px rgba(var(--bs-dark-rgb), 0.017),
+      0px 4px 2.7px rgba(var(--bs-dark-rgb), 0.024),
+      0px 7.5px 5px rgba(var(--bs-dark-rgb), 0.03),
+      0px 13.4px 8.9px rgba(var(--bs-dark-rgb), 0.036),
+      0px 25.1px 16.7px rgba(var(--bs-dark-rgb), 0.043),
+      0px 60px 40px rgba(var(--bs-dark-rgb), 0.06);
+
+}

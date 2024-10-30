@@ -1,0 +1,18 @@
+@import './mixins/common-mixins';
+.text-primary {
+  color: var(--accent) !important;
+}
+
+.text-secondary {
+  color: var(--secondary) !important;
+}
+.svg-primary { color: var(--svg-primary) !important; } 
+.svg-secondary { color: var(--svg-secondary) !important; }
+.svg-accent--dark { color: var(--svg-accent--dark) !important; } 
+.svg--accent--light { color: var(--svg-accent--light) !important; }
+.svg-secondary--dark { color: var(--svg-secondary--dark) !important; } 
+.svg-secondary--light { color: var(--svg-secondary--light) !important; }
+.text-balance { text-wrap: balance !important; }
+.max-w-100 {
+  max-width: 100%!important;
+}

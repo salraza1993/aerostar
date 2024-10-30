@@ -1,0 +1,33 @@
+@import './../../mixins/common-mixins';
+
+.home-clients-section {
+  --block-padding-y: calc(1rem + 1vw);
+  position: relative;
+  padding-block: var(--block-padding-y) calc(var(--block-padding-y) / 2);
+  background-color: var(--primary-100);
+  
+  .home-clients-content {
+    position: relative;
+    width: 100%;
+    .client-logo-box {
+      width: 200px;
+      height: 80px;
+      img {
+        filter: grayscale(1);
+        mix-blend-mode: multiply;
+      }
+    }
+    .clients-logo-swiper {
+      --swiper-pagination-top: calc(100% - 10px);
+      --swiper-theme-color: var(--accent);
+      padding-block-end: calc(var(--block-padding-y) / 1);
+      .swiper-horizontal>.swiper-pagination-bullets,
+      .swiper-pagination-bullets.swiper-pagination-horizontal {
+        height: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+}

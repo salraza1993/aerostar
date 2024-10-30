@@ -1,0 +1,20 @@
+@import './../../mixins/common-mixins';
+@import './../../BlogCard.scss';
+:root {
+  --block-padding-y: calc(1rem + 1vw);
+}
+.home-blog-section {
+  position: relative;
+  padding-block: var(--block-padding-y) calc(var(--block-padding-y) * 1.5);
+  .home-blog-content {
+    position: relative;
+    width: 100%;
+    .section-header {
+      margin-block-end: var(--block-padding-y);
+    }
+  }
+  .home-blog-lists {
+    position: relative;
+  }
+}
+

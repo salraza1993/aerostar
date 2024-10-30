@@ -1,0 +1,146 @@
+@import './../../mixins/common-mixins';
+
+.home-services-section {
+  --block-padding-y: calc(1rem + 1vw);
+  position: relative;
+  padding-block: var(--block-padding-y);
+
+  .home-services-content {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: calc(var(--block-padding-y) * 2);
+
+    .title {
+      text-wrap: balance;
+      max-width: 400px;
+    }
+    .text {
+      max-width: calc(600px + 3vw);
+    }
+  }
+  .home-service-card-container {
+    --card-width: 400px;
+    --card-height: calc(var(--card-width) / 3 * 4);
+    --card-padding: calc(1rem + 0.5vw);
+    --card-content-margin: calc(0px - var(--card-padding));
+    --card-content-wrapper-margin: -100%;
+    --card-gradient-position: 30%;
+
+    position: relative;
+    
+    .home-service-cards-swiper {
+      --swiper-pagination-progressbar-bg-color: var(--border-color);
+      --swiper-theme-color: var(--accent);
+      --swiper-scrollbar-sides-offset: calc(var(--accumulated-width) / 2);
+      --swiper-pagination-progressbar-size: 5px;
+      padding-inline: calc(var(--accumulated-width) / 2);
+      .swiper-wrapper {
+        padding-block-start: calc(var(--block-padding-y) / 1);
+        padding-block-end: calc(var(--block-padding-y) * 2);
+      }
+      .swiper-horizontal > .swiper-scrollbar, .swiper-scrollbar.swiper-scrollbar-horizontal {
+        opacity: 1 !important;
+      }
+      .swiper-horizontal>.swiper-pagination-progressbar,
+      .swiper-pagination-progressbar.swiper-pagination-horizontal {
+        width: calc(var(--container-width) - var(--bs-gutter-x));
+        border-radius: var(--swiper-pagination-progressbar-size);
+        left: calc(var(--accumulated-width) / 2);
+        top: calc(100% - var(--swiper-pagination-progressbar-size));
+        .swiper-pagination-progressbar-fill {
+          border-radius: inherit;
+        }
+
+      }
+    }
+    
+    .home-service-card {
+      position: relative;
+      width: var(--card-width);
+      height: var(--card-height);
+      max-width: var(--card-width);
+      background-color: blue;
+      border-radius: calc(var(--border-radius) * 2);
+      background-color: var(--primary-300);
+      box-shadow: var(--box-shadow);
+      // &:last-child { margin: 0 !important; }
+      &:hover, &:focus-within {
+        --card-content-margin: 0;
+        --card-content-wrapper-margin: 0;
+        --card-gradient-position: 100%;
+        
+        .card-body {
+          padding-block-end: var(--card-padding);
+          .card-title {
+            padding-block-end: 0;
+          }
+        }
+      }
+
+      .card-image {
+        position: absolute;
+        width: var(--card-width);
+        height: var(--card-height);
+        border-radius: inherit;
+        z-index: 0;
+        @include objectFit();
+      }
+      .card-body {
+        position: relative;
+        border-radius: inherit;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        gap: calc(var(--card-padding) / 2);
+        padding: var(--card-padding);
+        padding-block-end: 0;
+        z-index: 1;
+        overflow: hidden;
+        color: var(--bs-white);
+        isolation: isolate;
+        &::after {
+          transition: var(--transition);
+          content: '';
+          position: absolute;
+          inset-block-end: 0;
+          inset-inline-start: 0;
+          width: 100%;
+          height: var(--card-gradient-position);
+          z-index: -1;
+          background-image: linear-gradient(to bottom, rgba(var(--bs-black-rgb), 0) 0%, rgba(var(--bs-black-rgb), 1) 100%);
+        }
+
+        .card-title { 
+          position: relative;  
+          transition: var(--transition);
+          padding-block-end: var(--card-padding);
+        }
+        
+        .card-content {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          height: max-content;
+          gap: calc(var(--card-padding) / 1);
+          transition: var(--transition);
+          overflow: hidden;
+          margin-block-end: var(--card-content-margin);
+
+          .card-content-text-wrapper {
+            transition: inherit;
+            margin-block-end: var(--card-content-wrapper-margin);
+          }
+          .text {
+            margin-block-end: 1rem;
+            @include multiline(4);
+          }
+        }
+      }
+    }
+  }
+
+}

@@ -1,0 +1,62 @@
+@import './mixins/common-mixins';
+:root {
+  --card-image-height: 300px;
+  --image-padding: 0.75rem;
+  --block-padding-y: calc(1rem + 1vw);
+}
+.blog-card {
+  position: relative;
+  width: 100%;
+
+  &__image {
+    background-color: var(--border-color);
+    display: flex;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    position: relative;
+    overflow: clip;
+    border-radius: calc(var(--border-radius) * 2);
+
+    .blog-info {
+      position: absolute;
+      width: calc(100% - var(--image-padding) * 2);
+      inset-inline-start: var(--image-padding);
+      inset-block-end: var(--image-padding);
+      background-color: rgba(var(--body-bg-rgb), 0.75);
+      backdrop-filter: blur(10px);
+      margin: 0;
+      padding: 0;
+      border-radius: var(--border-radius);
+      height: 45px;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+
+      li {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 600;
+        font-size: 1rem;
+      }
+    }
+  }
+
+  &__content {
+    position: relative;
+    width: 100%;
+    margin-block-start: 1rem;
+
+    .content-title {
+      position: relative;
+      font-family: var(--kanit-font);
+    }
+
+    .description {
+      @include multiline(3);
+      margin-block-end: calc(var(--block-padding-y) / 2);
+    }
+  }
+
+}

@@ -1,0 +1,57 @@
+@import './../../mixins/common-mixins';
+
+.home-about-section {
+  --block-padding-y: calc(1rem + 1vw);
+  position: relative;
+  padding-block: var(--block-padding-y);
+
+  .home-about-content {
+    --container-max-width: 990px;
+    --inner-padding: calc(1rem + 1vw);
+    position: relative;
+    max-width: var(--container-max-width);
+    border-radius: calc(var(--border-radius) * 2);
+    background-color: var(--h_about-bg);
+    display: flex;
+    margin-inline: auto;
+    .airplane-image {
+      position: relative;
+      width: 100%;
+      height: 150px;
+      margin-block-start: var(--inner-padding);
+      @include objectFit($fit: contain);
+      display: flex;
+      justify-content: flex-start;
+      &[dir="rtl"] {
+        rotate: y 180deg;
+        img { margin-inline-start: 1px; }
+      }
+      img { margin-inline-start: -1px; }
+    }
+    .home-about-content__title {
+      padding-inline-start: var(--inner-padding);
+    }
+    .title {
+      color: var(--title-color);
+    }
+    .block {
+      &__start, &__end {
+        flex: 1;
+        position: relative;
+        padding: var(--inner-padding);
+      }
+      &__start {
+        padding-inline-start: 0;
+      }
+      &__end {
+        max-width: calc(400px + 1vw);
+      }
+    }
+    .home-about-text {
+      display: flex;
+      flex-direction: column;
+      p:last-child { margin: 0;}
+      gap: calc(var(--block-padding-y) / 1.5);
+    }
+  }
+}

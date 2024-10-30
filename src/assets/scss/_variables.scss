@@ -1,0 +1,25 @@
+@import './mixins/variable-mixins';
+
+// -------------------------------------- //
+:root {
+  @include commonVariables();
+  &[dir="rtl"] {
+    --bs-body-font-family: var(--amiri-font), var(--bs-font-sans-serif);
+  }
+
+  @media (prefers-color-scheme: light) {
+    @include lightColors();
+  }
+
+  &[data-theme="light"] {
+    @include lightColors();
+  }
+
+  @media (prefers-color-scheme: dark) {
+    @include darkColors();
+  }
+
+  &[data-theme="dark"] {
+    @include darkColors();
+  }
+}

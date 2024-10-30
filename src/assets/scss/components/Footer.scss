@@ -1,0 +1,233 @@
+@import './../mixins/common-mixins';
+@mixin anchorHover() {
+  position: relative;
+  &::after {
+    transition: var(--transition);
+    content: '';
+    position: absolute;
+    inset-block-start: calc(100% + 0.25rem);
+    inset-inline-end: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--accent);
+  }
+
+  &:hover {
+    color: var(--accent);
+    &:after {
+      width: 100%;
+      inset-inline-start: 0;
+    }
+  }
+}
+.main-footer {
+  --footer-padding-y: calc(1rem + 1vw);
+  position: relative;
+  width: 100%;
+  background-color: var(--footer-bg);
+  color: var(--footer-color);
+  padding-block: var(--footer-padding-y);  
+
+  ul { margin: 0; padding: 0; list-style: none; }
+
+  .ctas-boxes-container {
+    position: relative;
+    width: 100%;
+    padding-block-end: var(--footer-padding-y);
+    
+    .ctas-boxes-content {
+      position: relative;
+      padding-block: calc(var(--footer-padding-y) / 2);
+      padding-inline: calc(var(--footer-padding-y) / 1.5);
+      background-color: rgba(var(--footer-color-rgb), 0.06);
+      box-shadow: 0 0 0 1px rgba(var(--footer-color-rgb), 0.15);
+      border-radius: calc(var(--border-radius) * 1.5);
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+
+      .ctas-box {
+        min-width: 200px;
+        max-width: 300px;
+        display: flex;
+        gap: calc(var(--footer-padding-y) / 2);
+        align-items: center;
+        .title { color: var(--accent); margin: 0;}
+        a, span { font-weight: 500; font-size: calc(var(--font-size-small) * 1.15);}
+        &__icon {
+          position: relative;
+          width: 45px;
+          height: 45px;
+          background-color: rgba(var(--footer-color-rgb), 0.15);
+          border-radius: var(--border-radius);
+          color: var(--bs-white);
+          display: flex;
+          i { margin: auto; font-size: var(--font-size-5); }
+        }
+      }
+    }
+  }
+
+  .footer-content-block {
+    position: relative;
+    width: 100%;
+    &:is(.footer-about-content) {
+      padding-inline-end: var(--footer-padding-y);
+      text-wrap: balance;
+    }
+    &__header {
+      display: flex;
+      margin-block-end: calc(var(--footer-padding-y) / 2);
+      color: var(--accent);
+    }
+    &__body {
+      position: relative;
+    }
+
+    &:is(.footer-links-container) {
+      .footer-content-block__body {
+        display: flex;
+        .footer-links {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          gap: 0.4rem;
+          &__list {
+            &__link {
+              position: relative;
+              max-width: max-content;
+              @include anchorHover();
+            }
+          }
+        }
+      }
+    }
+    .footer-logo {
+      display: flex;
+      width: 180px;
+      margin-block-end: var(--footer-padding-y);
+      @include objectFit($fit: contain);
+    }
+  }
+
+  .footer-newsletter-n-social-group {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--footer-padding-y) / 1.5);
+    @media (width > 767px) and (width < 1200px) {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      gap: calc(var(--footer-padding-y) / 1);
+      padding-block-start: calc(var(--footer-padding-y) / 1.5);
+      margin-block-start: calc(var(--footer-padding-y) / 1.5);
+      border-block-start: 1px solid rgba(var(--footer-color-rgb), 0.25);
+    }
+  }
+  .newsletter-input-group, .social-media-group {
+    --icon-size: 42px;
+    position: relative;
+    width: 100%;
+    background-color: rgba(var(--footer-color-rgb), 0.25);
+    border-radius: var(--border-radius);
+    padding: 0.5rem;
+    transition: var(--transition);
+    &:focus-within, &:hover {
+      background-color: rgba(var(--footer-color-rgb), 0.5);
+      box-shadow: var(--box-shadow), 0 0 0 5px rgba(var(--footer-color-rgb), 0.15);
+      .icon:is(.submit-button) {
+        background-color: var(--secondary-bg);
+        color: var(--secondary-color);
+      }
+    }
+  }
+  .newsletter-input-group {
+    display: flex;
+    .icon {
+      width: var(--icon-size);
+      aspect-ratio: 1;
+      position: relative;
+      flex-shrink: 0;
+      display: grid;
+      place-items: center;
+      transition: var(--transition);
+      border-radius: var(--border-radius);
+      color: inherit;
+      border: 0;
+      outline: none;
+      background-color: transparent;
+      &:is(.submit-button):hover {
+        background-color: var(--accent-bg);
+        color: var(--accent-color);
+      }
+    }
+  
+    .newsletter-input {
+      background-color: var(--transparent);
+      width: 100%;
+      border: 0;
+      outline: none;
+      padding-inline: 1rem;
+      transition: var(--transition);
+      border-radius: var(--border-radius);
+      margin-inline-end: 0.5rem;
+      &::placeholder {
+        color: var(--footer-color);
+      }
+      &:focus {
+        background-color: var(--footer-bg);
+        color: var(--footer-color);
+        &::placeholder {
+          color: inherit;
+        }
+      }
+    }
+  }
+  .social-media-group {
+    .social-media {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      &__item {
+        &__link {
+          position: relative;
+          display: grid;
+          place-items: center;
+          width: var(--icon-size);
+          font-size: 1.25rem;
+          aspect-ratio: 1;
+          transition: var(--transition);
+          border-radius: var(--border-radius);
+          &:hover {
+            background-color: var(--accent);
+            color: var(--accent-color);
+          }
+        }
+      }
+    }
+  }
+
+
+
+  .footer-copy-writes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-block-start: calc(var(--footer-padding-y) / 1.5);
+    margin-block-start: calc(var(--footer-padding-y) / 1.5);
+    border-block-start: 1px solid rgba(var(--footer-color-rgb), 0.25);
+
+    .copy-write {
+      display: flex;
+      gap: var(--footer-padding-y);
+      &__list {
+        position: relative;
+        &__link {
+          @include anchorHover();
+        }
+      }
+    }
+  }
+}

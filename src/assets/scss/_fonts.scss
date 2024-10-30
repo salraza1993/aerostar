@@ -1,0 +1,32 @@
+@import './mixins/common-mixins';
+
+$font-weights: 100, 200, 300, 400, 500, 600, 700, 800, 900;
+@include generateFontWeights($font-weights, $internal: false);
+.amiri {
+  font-family: var(--amiri-font) !important;
+  @include generateFontWeights($font-weights);
+}
+.cairo {
+  font-family: var(--cairo-font) !important;
+  @include generateFontWeights($font-weights);
+}
+.roboto {
+  font-family: var(--roboto-font) !important;
+  @include generateFontWeights($font-weights);
+}
+.open-sans {
+  font-family: var(--open-sans-font) !important;
+  @include generateFontWeights($font-weights);
+}
+.kanit {
+  font-family: var(--kanit-font) !important;
+  @include generateFontWeights($font-weights);
+}
+.merriweather {
+  font-family: var(--merriweather-font) !important;
+  @include generateFontWeights($font-weights);
+}
+
+.font-size {
+  font-size: var(--font-size);
+}

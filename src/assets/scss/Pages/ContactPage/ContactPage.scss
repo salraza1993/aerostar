@@ -1,0 +1,181 @@
+@import './../../mixins/common-mixins';
+
+:root {
+  --block-padding: calc(1rem + 1vw);
+  --overlay-extra-margin: calc(60px + 3vw);
+}
+
+.contact-info-section {
+  position: relative;
+  padding-block-start: var(--block-padding);
+  text-align: center;
+  z-index: 1;
+
+  .contact-info-list {
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    background-color: var(--contact-info-bg);
+    border-radius: calc(var(--border-radius) * 2);
+    margin-block-start: var(--block-padding);
+    justify-content: space-around;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-color: var(--body-bg);
+      z-index: -1;
+      border-radius: inherit;
+      @include cardShadow();
+    }
+
+    &__item {
+      position: relative;
+      padding: var(--block-padding);
+      flex: 1;
+      isolation: isolate;
+
+      &:nth-child(2) {
+        &::after {
+          content: '';
+          position: absolute;
+          inset: 0.5rem 0;
+          border-radius: var(--border-radius);
+          background-color: rgba(var(--body-bg-rgb), 0.7);
+          z-index: -1;
+        }
+      }
+
+      .map-link {
+        display: inline-flex;
+
+        a {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.35rem 0.98rem;
+          line-height: normal;
+          font-weight: 600;
+          margin-block-start: 1rem;
+          border-radius: calc(var(--border-radius) * 5);
+          background-color: var(--body-bg);
+          border: 1px solid var(--border-color);
+          transition: var(--transition);
+
+          &:hover {
+            background-color: var(--accent);
+            border-color: var(--accent);
+            color: var(--accent-color);
+          }
+        }
+      }
+
+      &__icon {
+        width: 60px;
+        display: inline-block;
+        margin-inline: auto;
+        aspect-ratio: 1;
+        margin-block-end: calc(var(--block-padding) / 3);
+        @include objectFit($fit: contain);
+      }
+    }
+  }
+}
+
+.contact-google-map-sec {
+  --map-height: 350px;
+  position: relative;
+  z-index: 0;
+  padding-inline: var(--fluid-container-padding);
+  padding-block-end: var(--block-padding);
+
+  &__container {
+    position: relative;
+    width: 100%;
+    margin-block-start: calc(0px - var(--overlay-extra-margin));
+    height: var(--map-height);
+    background-color: var(--border-color);
+    overflow: clip;
+    border-radius: calc(var(--border-radius) * 2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-color: rgba(var(--bs-dark-rgb), 0.5);
+      backdrop-filter: blur(1px);
+      z-index: 1;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+    }
+
+    .view-map {
+      position: absolute;
+      margin: auto;
+      z-index: 2;
+      margin-block-end: calc(0px - 7%);
+    }
+  }
+}
+
+.contact-form-section {
+  position: relative;
+  padding-block: var(--block-padding);
+
+  .contact-form-content {
+    position: relative;
+    text-align: center;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--secondary);
+    border-radius: calc(var(--border-radius) * 2);
+    text-align: start;
+    padding: var(--block-padding);
+    isolation: isolate;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background-color: var(--secondary);
+      background-image: url('/images/contact-banner.jpg');
+      background-blend-mode: luminosity;
+      opacity: 0.25;
+      background-position: center;
+      background-size: cover;
+      z-index: -1;
+    }
+
+    .block {
+      &__start,
+      &__end {
+        position: relative;
+        color: var(--bs-white);
+        display: flex;
+        justify-content: center;
+      }
+      &__start {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      &__end {
+        min-width: 550px;
+      }
+    }
+    .content { max-width: calc(400px + 5vw); }
+  }
+}
