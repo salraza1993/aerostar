@@ -2,8 +2,6 @@
 import Link from "next/link";
 import { useSelectedLayoutSegment } from "next/navigation";
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { liVariants } from "../FramerMotions/motionsList";
 
 interface MenuInterface {
   label: string;
@@ -14,11 +12,10 @@ interface MenuInterface {
 }
 
 type Props = {
-  isAnimate?: boolean;
   clickedHandle?: (value: boolean) => void;
 }
 
-export default function HeaderMenu({ isAnimate = false, clickedHandle} : Props) {
+export default function HeaderMenu({  clickedHandle} : Props) {
   const selectedLayoutSegment = useSelectedLayoutSegment();
   const pathname = selectedLayoutSegment ? `/${selectedLayoutSegment}` : '/';
   

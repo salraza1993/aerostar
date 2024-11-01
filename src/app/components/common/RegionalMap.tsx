@@ -7,10 +7,10 @@ import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 
 export default function RegionalMap() {
   useLayoutEffect(() => {
-    let root = am5.Root.new("chartDiv");
+    const root = am5.Root.new("chartDiv");  // Changed from 'let' to 'const'
     root.setThemes([am5themes_Animated.new(root)]);
 
-    let chart = root.container.children.push(
+    const chart = root.container.children.push(
       am5map.MapChart.new(root, {
         panX: "rotateX",  // Enable horizontal rotation
         panY: "translateY",
@@ -22,7 +22,7 @@ export default function RegionalMap() {
       })
     );
 
-    let polygonSeries = chart.series.push(
+    const polygonSeries = chart.series.push(
       am5map.MapPolygonSeries.new(root, {
         geoJSON: am5geodata_egyptLow,
       })
@@ -34,7 +34,7 @@ export default function RegionalMap() {
       fill: am5.color(0xc1c1d8), // Set your desired fill color here
     });
 
-    let bubbleSeries = chart.series.push(
+    const bubbleSeries = chart.series.push(
       am5map.MapPointSeries.new(root, {
         valueField: "value",
         calculateAggregates: true,
@@ -42,12 +42,12 @@ export default function RegionalMap() {
       })
     );
 
-    let circleTemplate = am5.Template.new<am5.Circle>({});
+    const circleTemplate = am5.Template.new<am5.Circle>({});
 
-    bubbleSeries.bullets.push((root, series, dataItem) => {
-      let container = am5.Container.new(root, {});
+    bubbleSeries.bullets.push((root) => {
+      const container = am5.Container.new(root, {});
 
-      let circle = container.children.push(
+      const circle = container.children.push(
         am5.Circle.new(root, {
           radius: 20,
           fillOpacity: 0.8,
@@ -57,7 +57,7 @@ export default function RegionalMap() {
         }, circleTemplate)
       );
 
-      let countryLabel = container.children.push(
+      const countryLabel = container.children.push(
         am5.Label.new(root, {
           text: "{title}",
           fill: am5.color(0x2A2C75),
@@ -79,7 +79,7 @@ export default function RegionalMap() {
       });
     });
 
-    bubbleSeries.bullets.push((root, series, dataItem) => {
+    bubbleSeries.bullets.push((root) => {
       return am5.Bullet.new(root, {
         sprite: am5.Label.new(root, {
           text: "{value.formatNumber('#.')}",
@@ -105,7 +105,7 @@ export default function RegionalMap() {
       }
     ]);
 
-    let citiesData = [
+    const citiesData = [
       { id: "cairo", geometry: { type: "Point", coordinates: [31.4054, 30.1214] }, title: "Cairo", value: Math.round(Math.random() * 100) },
       { id: "hurghada", geometry: { type: "Point", coordinates: [33.8314, 27.2574] }, title: "Hurghada", value: Math.round(Math.random() * 100) },
       { id: "aswan", geometry: { type: "Point", coordinates: [32.7774, 24.0894] }, title: "Aswan", value: Math.round(Math.random() * 100) },
