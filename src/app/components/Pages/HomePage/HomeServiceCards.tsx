@@ -19,7 +19,7 @@ export default function HomeServiceCards( { data }: { data: cardProps[] }): Reac
       <Swiper
         dir='ltr'
         freeMode={true}
-        spaceBetween={30}
+        spaceBetween={25}
         pagination={{ type: "progressbar" }}
         grabCursor={true}
         slidesPerView={'auto'}
@@ -34,7 +34,7 @@ export default function HomeServiceCards( { data }: { data: cardProps[] }): Reac
               </div>
               <div className="card-body">
                 <div className="card-title">
-                  <h3 className='merriweather fw-700'>{card.title}</h3>
+                  <h4 className='merriweather fw-700'>{card.title}</h4>
                 </div>
                 <div className="card-content">
                   <div className="card-content-text-wrapper">

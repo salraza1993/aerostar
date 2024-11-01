@@ -12,17 +12,18 @@ function FooterQuickLinks(): React.ReactElement {
   /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
   const [pageMenus, setPageMenus] = useState<PageMenusTypes[]>([
     { label: "Home", href: "/" },
-    { label: "About us ", href: "" },
-    { label: "Our Team", href: "" },
-    { label: "Career", href: "" },
-    { label: "Blog ", href: "" },
-    { label: "Contact us", href: "" },
+    { label: "About Us", href: "/about" },
+    { label: "Blog", href: "/blogs" },
+    { label: "Services", href: "/services" },
+    { label: "Contact Us", href: "/contact" },
   ]);
   /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
   const [servicesMenus, setServicesMenus] = useState<PageMenusTypes[]>([
     { label: "Services - 1", href: "/" },
     { label: "Services - 2", href: "" },
     { label: "Services - 3", href: "" },
+    { label: "Services - 4", href: "" },
+    { label: "Services - 5", href: "" },
   ]);
 
   return <FooterContentWrapper classes="footer-links-container" title={blockHeading}>

@@ -7,6 +7,12 @@
   padding: calc(0.5rem + 0.5vw);
   padding-inline: var(--fluid-container-padding);
   color: var(--block-content-color);
+  @media (width <= #{$medium}) {
+    --banner-height: 100px;    
+  }
+  @media (width <= #{$small}) {
+    padding: 0;
+  }
 
   .hero-banner-content {
     position: relative;
@@ -19,6 +25,9 @@
       inset: 0;
       border-radius: calc(var(--border-radius) * 2);
       @include objectFit();
+      @media (width <=#{$small}) {
+        border-radius: 0;
+      }
       &::after {
         content: '';
         position: absolute;

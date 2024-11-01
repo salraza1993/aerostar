@@ -20,8 +20,8 @@ export default function Header(): React.ReactElement {
               <MobileMenu />
             </div>
             <div className="block__end">
-              <ThemeAndLang />
-              <Button type={'link'} path={'/contact'} icon={'user-headset'} label={"GetAssistance"} color={'accent'} />
+              <ThemeAndLang blockClass="hide-mobile" />
+              <Button type={'link'} path={'/contact'} icon={'user-headset'} label={"Get Assistance"} color={'accent'} />
             </div>
           </div>
         </div>

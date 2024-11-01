@@ -6,7 +6,7 @@
   padding-block: var(--block-padding-y);
 
   .home-about-content {
-    --container-max-width: 990px;
+    --container-max-width: 1100px;
     --inner-padding: calc(1rem + 1vw);
     position: relative;
     max-width: var(--container-max-width);
@@ -14,12 +14,15 @@
     background-color: var(--h_about-bg);
     display: flex;
     margin-inline: auto;
+    @media (width <= #{$small}) {
+      flex-direction: column;
+    }
     .airplane-image {
       position: relative;
       width: 100%;
       height: 150px;
       margin-block-start: var(--inner-padding);
-      @include objectFit($fit: contain);
+      @include objectFit($fit: contain, $position: left);
       display: flex;
       justify-content: flex-start;
       &[dir="rtl"] {
@@ -42,9 +45,13 @@
       }
       &__start {
         padding-inline-start: 0;
+        @media (width <=#{$small}) {
+          padding-inline: 0;
+          padding-block-end: 0;
+        }
       }
       &__end {
-        max-width: calc(400px + 1vw);
+        max-width: calc(500px + 1vw);
       }
     }
     .home-about-text {

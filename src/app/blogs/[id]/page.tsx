@@ -8,12 +8,12 @@ export default function BlogDetails() {
   return <>
     {/* <SubPageHeroBanner title='Blog Details' /> */}
     <section className="blog-details-section">
-      <div className="container">
-        <div className="blog-details-banner">
-          <div className="blog-details-banner__image">
-            <Image src={blogBanner} alt="Blog Details Banner" fill priority />
-          </div>
+      <div className="blog-details-banner">
+        <div className="blog-details-banner__image">
+          <Image src={blogBanner} alt="Blog Details Banner" fill priority />
         </div>
+      </div>
+      <div className="container">
         <div className="blog-details">
           <h1 className="merriweather fs-3 mb-4 fw-700 text-secondary">Charter flight of the Death Penalty in America An Impactful Site is More Than Just Good Design.</h1>
           <p>

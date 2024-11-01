@@ -10,7 +10,7 @@ function Footer(): React.ReactElement {
     <footer className='main-footer'>
       <FooterCTAsSection />
       <div className="container">
-        <div className="row">
+        <div className="row gy-3">
           <div className="col-xl-4 col-lg-7 col-md-6 col-12">
             <FooterContent />
           </div>

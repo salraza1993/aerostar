@@ -6,7 +6,7 @@ export default function MissionVision() {
   return <section className='mission-vision-section'>
     <div className="container">
       <div className="mission-vision-content">
-        <div className="row">
+        <div className="row gy-3">
           <div className="col-12 col-lg-6">
             <div className='mission-vision-box'>
               <div className="mission-vision-box__header">

@@ -3,6 +3,9 @@
   --card-image-height: 300px;
   --image-padding: 0.75rem;
   --block-padding-y: calc(1rem + 1vw);
+  @media (width <=#{$medium}) and (width >=#{$small}) {
+    --image-padding: 0.25rem;
+  }
 }
 .blog-card {
   position: relative;
@@ -58,5 +61,15 @@
       margin-block-end: calc(var(--block-padding-y) / 2);
     }
   }
-
+  @media (width <= #{$medium}) and (width >= #{$small})  {
+    &.homeBlogCard {
+      display: flex;
+      gap: var(--block-padding-y);
+      .blog-card__image {
+      }
+      .blog-card__content {
+        margin-block-start: 0;
+      }
+    }
+  }
 }

@@ -25,6 +25,9 @@
         width: 100%;
         aspect-ratio: 1/0.8;
         @include objectFit($fit: contain);
+        @media (width <= #{$medium}) {
+          margin-block-start: 1rem;
+        }
       }
     }
   }
@@ -37,6 +40,10 @@
   --card-content-margin: calc(0px - var(--card-height));
   --heading-margin: 0;
   --card-gradient: linear-gradient(to bottom, rgba(var(--bs-dark-rgb), 0) 0%, rgba(var(--bs-dark-rgb), 1) 100%);
+  @media (width <= #{$medium}) {
+    --card-width: calc(250px + 3vw);    
+    --card-height: 350px;
+  }
   position: relative;
   width: 100%;
   padding-block-end: var(--block-padding);
@@ -50,6 +57,12 @@
       pointer-events: none;
       margin: 0;
       padding: 0;
+      @media (width <=#{$small}) {
+        overflow-x: scroll;
+        width: 100vw;
+        margin-inline-start: calc(0px - var(--mobile-padding));
+        padding-inline: var(--mobile-padding);
+      }
       &__list {
         pointer-events: auto;
         position: relative;
@@ -128,6 +141,22 @@
           .heading { opacity: 0; transition-delay: 100ms; }
           .__content-wrapper .__content { transition-delay: 250ms; }
         }
+        @media (width <= #{$small}) {
+          --card-content-margin: 0;
+          --heading-margin: calc(-100% - (var(--card-padding) * 5));
+          --card-gradient: linear-gradient(to bottom, rgba(var(--bs-dark-rgb), 0) 0%, rgba(var(--bs-dark-rgb), 1) 100%);
+          width: var(--card-width);
+          transition-delay: 100ms;
+        
+          .heading {
+            opacity: 0;
+            transition-delay: 100ms;
+          }
+        
+          .__content-wrapper .__content {
+            transition-delay: 250ms;
+          }
+        }
         & .__image {
           position: relative;
           width: 100%;
@@ -161,6 +190,8 @@
       padding: var(--block-padding);
       display: flex;
       flex-direction: column;
+      max-height: max-content;
+      gap: 1rem;
       gap: var(--block-padding);
       &__header {
         display: flex;
@@ -203,6 +234,10 @@
       background-color: var(--secondary);
       z-index: -1;
       border-radius: calc(var(--border-radius) * 3);
+      @media (width <= #{$medium}) {
+        inset: 0;
+        border-radius: 0;
+      }
     }
 
     &::after {
@@ -241,7 +276,7 @@
           display: flex;
           flex-direction: column;
           gap: calc(var(--block-padding) / 2);
-
+          p { &:last-child { margin: 0; }}
           &__icon {
             width: 90px;
             aspect-ratio: 1;
@@ -256,6 +291,18 @@
 
           &__content {
             position: relative;
+          }
+        }
+        @media (width <= #{$small}) {
+          width: 100vw;
+          margin-inline: calc(0px - var(--mobile-padding));
+          padding-inline: var(--mobile-padding);
+          overflow-x: scroll;
+          .features-card {
+            min-width: 75vw;
+            background-color: rgba(var(--bs-white-rgb), 0.1);
+            padding: calc(var(--mobile-padding) * 1.25);
+            border-radius: calc(var(--border-radius) * 1.5);
           }
         }
       }

@@ -3,6 +3,7 @@ import React from 'react'
 import Button from '../../common/Button'
 
 export type BlogCardContentTypes = {
+  cardClassName?: string,
   title: string,
   description: string,
   image: string,
@@ -11,8 +12,9 @@ export type BlogCardContentTypes = {
   comments: string | number,
   path: string,
 }
-export default function BlogCard({title, description, image, date, comments, path} : BlogCardContentTypes) : React.ReactElement {
-  return <div className="blog-card">
+
+export default function BlogCard({title, description, image, date, comments, path, cardClassName} : BlogCardContentTypes) : React.ReactElement {
+  return <div className={`blog-card ${cardClassName}`}>
     <div className="blog-card__image">
       <Image src={image} alt="Blog Card Image" fill />
       <ul className="blog-info">
@@ -27,7 +29,7 @@ export default function BlogCard({title, description, image, date, comments, pat
       </ul>
     </div>
     <div className="blog-card__content">
-      <h5 className='content-title'>{ title }</h5>
+      <h6 className='content-title'>{ title }</h6>
       <div className="description">{description}</div>
       <Button type='link' path={path} label='Read More' color='gray' icon='angle-right' iconPosition='after' />
     </div>

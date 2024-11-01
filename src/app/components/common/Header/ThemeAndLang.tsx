@@ -1,9 +1,12 @@
 'use client';
 import ThemeChanger from './ThemeChanger';
 
-function ThemeAndLang(): React.ReactElement {
+type Props = {
+  blockClass?: string;
+}
+function ThemeAndLang({ blockClass } : Props): React.ReactElement {
   return (
-    <ul className="theme-n-lang">
+    <ul className={`theme-n-lang ${blockClass}`}>
       <ThemeChanger />
     </ul>
   )

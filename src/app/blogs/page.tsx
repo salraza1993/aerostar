@@ -96,10 +96,10 @@ export default function BlogPage(): React.ReactElement {
       <div className="container">
         <div className="blog-listing-content">
           <main>
-            <div className="row gy-5">
+            <div className="row gy-4">
               {
                 blogCardData.map((card, index) => (
-                  <div key={index} className="col-12 col-md-6">
+                  <div key={index} className="col-12 col-lg-6">
                     <BlogCard
                       title={card.title}
                       description={card.description}
@@ -114,7 +114,7 @@ export default function BlogPage(): React.ReactElement {
               }
             </div>
           </main>
-          <aside>
+          <aside className='hide-small'>
             aside bar
           </aside>
         </div>

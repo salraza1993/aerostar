@@ -9,7 +9,7 @@ export default function HomeBlogSection() {
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda magni veritatis adipisci eligendi, in cumque ea consectetur rem facere unde eaque nobis quae soluta qui iusto dolor tenetur exercitationem quidem! eos optio',
       image: '/images/blog-image-1.png',
       imageAlt: 'string',
-      date: 'January 20, 2022',
+      date: 'Jan 20, 2022',
       comments: '05',
       path: '/',
     },
@@ -18,7 +18,7 @@ export default function HomeBlogSection() {
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda magni veritatis adipisci eligendi, in cumque ea consectetur rem facere unde eaque nobis quae soluta qui iusto dolor tenetur exercitationem quidem! eos optio',
       image: '/images/blog-image-2.png',
       imageAlt: 'string',
-      date: 'January 20, 2022',
+      date: 'Jan 20, 2022',
       comments: '05',
       path: '/',
     },
@@ -27,7 +27,7 @@ export default function HomeBlogSection() {
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda magni veritatis adipisci eligendi, in cumque ea consectetur rem facere unde eaque nobis quae soluta qui iusto dolor tenetur exercitationem quidem! eos optio',
       image: '/images/blog-image-3.png',
       imageAlt: 'string',
-      date: 'January 20, 2022',
+      date: 'Jan 20, 2022',
       comments: '05',
       path: '/',
     },
@@ -42,11 +42,12 @@ export default function HomeBlogSection() {
           <Button type='link' path="/" label='View All' color='gray' icon='angle-right' iconPosition='after' />
         </div>
         <div className="home-blog-lists">
-          <div className="row">
+          <div className="row g-3">
             {
               blogCardData.map((card, index) => (
-                <div key={index} className="col-12 col-md-6 col-lg-4">
+                <div key={index} className="col-12 col-md-12 col-lg-4">
                   <BlogCard
+                    cardClassName={"homeBlogCard"}
                     title={card.title}
                     description={card.description}
                     image={card.image}

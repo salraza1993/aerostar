@@ -39,11 +39,12 @@ export default function RelatedArticles() {
         </h2>
       </div>
       <div className="blog-listing-content">
-        <div className="row gy-5">
+        <div className="row gy-3">
           {
             blogCardData.map((card, index) => (
-              <div key={index} className="col-12 col-md-6 col-lg-4">
+              <div key={index} className="col-12 col-md-12 col-lg-4">
                 <BlogCard
+                  cardClassName='homeBlogCard'
                   title={card.title}
                   description={card.description}
                   image={card.image}

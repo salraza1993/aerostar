@@ -2,6 +2,8 @@
 
 .home-services-section {
   --block-padding-y: calc(1rem + 1vw);
+  --content-max-width: calc(600px + 3vw);
+  --inset-margin-x: calc(var(--accumulated-width) / 2);
   position: relative;
   padding-block: var(--block-padding-y);
 
@@ -17,11 +19,17 @@
       max-width: 400px;
     }
     .text {
-      max-width: calc(600px + 3vw);
+      max-width: var(--content-max-width);
+    }
+    @media (width <= #{$medium}) {
+      --content-max-width: 100%;
+      flex-direction: column;
+      gap: calc(var(--block-padding-y) / 5);
     }
   }
+
   .home-service-card-container {
-    --card-width: 400px;
+    --card-width: clamp(14.063rem, calc(4.688rem + 25vw), 23.438rem);
     --card-height: calc(var(--card-width) / 3 * 4);
     --card-padding: calc(1rem + 0.5vw);
     --card-content-margin: calc(0px - var(--card-padding));
@@ -35,7 +43,10 @@
       --swiper-theme-color: var(--accent);
       --swiper-scrollbar-sides-offset: calc(var(--accumulated-width) / 2);
       --swiper-pagination-progressbar-size: 5px;
-      padding-inline: calc(var(--accumulated-width) / 2);
+      padding-inline: var(--inset-margin-x);
+      @media (width <= #{$medium}) {
+        --inset-margin-x: var(--mobile-padding);
+      }
       .swiper-wrapper {
         padding-block-start: calc(var(--block-padding-y) / 1);
         padding-block-end: calc(var(--block-padding-y) * 2);
@@ -47,12 +58,14 @@
       .swiper-pagination-progressbar.swiper-pagination-horizontal {
         width: calc(var(--container-width) - var(--bs-gutter-x));
         border-radius: var(--swiper-pagination-progressbar-size);
-        left: calc(var(--accumulated-width) / 2);
+        left: var(--inset-margin-x);
         top: calc(100% - var(--swiper-pagination-progressbar-size));
         .swiper-pagination-progressbar-fill {
           border-radius: inherit;
         }
-
+        @media (width <= #{$medium}) {
+          width: calc(var(--container-width) - calc(var(--inset-margin-x) * 2));
+        }
       }
     }
     

@@ -6,11 +6,16 @@
   --aside-width: 400px;
   --blog-details-banner-height: calc(300px + 5vw);
 }
-
+.blog-details-banner {
+  position: relative;
+  padding-inline: var(--fluid-container-padding);
+  @media (width <= #{$medium}) {
+    padding: 0;
+  }
+}
 .blog-listing-section {
   position: relative;
   padding-block: calc(var(--block-padding) / 1.5);
-
   .blog-listing-content {
     position: relative;
     width: 100%;
@@ -28,6 +33,7 @@
     }
   }
 }
+
 .blog-details-section {
   position: relative;
   padding-block: calc(var(--block-padding) / 2);
@@ -37,6 +43,7 @@
     position: relative;
     width: 100%;
     border-radius: calc(var(--border-radius) * 2);
+    
     &__image {
       position: relative;
       width: 100%;
@@ -105,6 +112,12 @@
     .badge {
       --bs-badge-padding-x: 0.9em;
       --bs-badge-padding-y: 0.5em;      
+    }
+  }
+  @media (width <=#{$medium}) {
+    padding: 0;
+    .blog-details-banner {
+      border-radius: 0;
     }
   }
 }

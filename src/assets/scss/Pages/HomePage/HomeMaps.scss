@@ -1,10 +1,11 @@
 @import './../../mixins/common-mixins';
 .home-maps-section {
-  --block-padding-y: calc(1rem + 1vw);
+  --block-padding: calc(1rem + 1vw);
   --map-height: 420px;
   --map-margin-height: calc(var(--map-height) / 2);
   position: relative;
-  padding-block: var(--block-padding-y);
+  padding-block: var(--block-padding);
+
   > .container {
     position: relative;
     z-index: 1;
@@ -12,25 +13,51 @@
 
   .home-maps-content {
     position: relative;
-    .section-header {
-      margin-block-end: var(--block-padding-y);
-      .title {
-        text-wrap: balance;
-      }
+    height: var(--map-height);
+    display: flex;
+    align-items: center;
+    background-color: var(--primary-100);
+    border-radius: calc(var(--border-radius) * 2);
+    overflow: clip;
+    @media (width <= #{$small}) {
+      flex-direction: column;
+      --map-height: 550px;
     }
+
     .home-maps {
       position: relative;
-      background-color: var(--border-color);
-      height: var(--map-height);
-      border-radius: calc(var(--border-radius) * 2);
+      width: 100%;
+      height: 100%;
+      background-color: #e9e9f3;
+    }
+    .__content {
+      position: relative;
+      max-width: calc(500px + 5vw);
+      padding: var(--block-padding);
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+      justify-content: flex-start;
+      gap: calc(var(--block-padding) / 2);
+      @media (width <=#{$medium}) and (width > #{$small}) {
+        max-width: calc(200px + 2vw);
+      }
+      // @media (width <=#{$small}) {
+      //   max-width: 100%;
+      //   width: 100%;
+      //   background-color: red;
+      // }
+    }
+    .am5-layer-30 {
+      display: none !important;
     }
   }
   .home-features-section {
     position: relative;
     width: 100%;
     margin-block-start: calc(0px - var(--map-margin-height));
-    padding-block-start: calc(var(--map-margin-height) + var(--block-padding-y));
-    padding-block-end: calc(var(--block-padding-y) * 1.5);
+    padding-block-start: calc(var(--map-margin-height) + var(--block-padding));
+    padding-block-end: calc(var(--block-padding) * 1.5);
     z-index: 0;
     color: var(--bs-white);
     isolation: isolate;
@@ -41,6 +68,10 @@
       background-color: var(--secondary);
       z-index: -1;
       border-radius: calc(var(--border-radius) * 3);
+      @media (width <= #{$medium}) {
+        --fluid-container-padding: 0;
+        border-radius: 0;
+      }
     }
     &::after {
       background-image: url('/images/airplane-landing.png');
@@ -57,8 +88,8 @@
       width: 100%;
       display: flex;
       flex-direction: column;
-      gap: var(--block-padding-y);
-      padding-block-start: var(--block-padding-y);
+      gap: var(--block-padding);
+      padding-block-start: var(--block-padding);
       
       .features-cards {
         --grid-columns: 3;
@@ -66,18 +97,34 @@
         width: 100%;
         display: grid;
         grid-template-columns: repeat(var(--grid-columns), 1fr);
-        gap: var(--block-padding-y);
+        gap: var(--block-padding);
+
+        @media (width <=#{$small}) {
+          width: 100vw;
+          margin-inline: calc(0px - var(--mobile-padding));
+          padding-inline: var(--mobile-padding);
+          overflow-x: scroll;
+      
+          .features-card {
+            min-width: 75vw;
+            background-color: rgba(var(--bs-white-rgb), 0.1);
+            padding: calc(var(--mobile-padding) * 1.25);
+            border-radius: calc(var(--border-radius) * 1.5);
+          }
+        }
 
         .features-card {
           position: relative;
           display: flex;
+          align-items: center;
+          text-align: center;
           flex-direction: column;
-          gap: calc(var(--block-padding-y) / 2);
+          gap: calc(var(--block-padding) / 2);
           &__icon {
             width: 90px;
             aspect-ratio: 1;
             position: relative;
-            margin-block-end: calc(var(--block-padding-y) / 2);
+            margin-block-end: calc(var(--block-padding) / 2);
             svg {
               width: 100%;
               height: 100%;
