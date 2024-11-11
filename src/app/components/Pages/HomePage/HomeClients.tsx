@@ -1,52 +1,17 @@
-'use client'
-import 'swiper/css';
-import 'swiper/css/pagination';
-import "@/assets/scss/Pages/HomePage/HomeClients.scss"
+import { graphqlRequest } from '@/lib/graphqlRequest';
+import ClientsCarousel from './ClientsCarousel';
+import { PageData } from '@/Interfaces/CommonTypes';
+import { ClientLogoQueryData, ClientLogoType, GET_CLIENTS_LOGO } from '@/Interfaces/ClientsLogoQueries';
 
-import Image from "next/image";
-import { Pagination } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
-type ClientImageTypes = {
-  image: string,
-}
-export default function HomeClients(): React.ReactElement {
-  const clientImages: ClientImageTypes[] = [
-    { image: '/images/client-1.png' },
-    { image: '/images/client-2.png' },
-    { image: '/images/client-3.png' },
-    { image: '/images/client-4.png' },
-    { image: '/images/client-5.png' },
-    { image: '/images/client-5.png' },
-    { image: '/images/client-5.png' },
-    { image: '/images/client-5.png' },
-    { image: '/images/client-5.png' },
-    { image: '/images/client-5.png' },
-  ]
+export default async function HomeClients() {
+  const response = await graphqlRequest<PageData<ClientLogoQueryData>>(GET_CLIENTS_LOGO);
+  const logos = Array.isArray(response?.pages?.edges[0]?.node?.clientsLogos?.logos?.nodes)
+  ? response.pages.edges[0].node.clientsLogos.logos.nodes as ClientLogoType[]
+  : [];
   return (
     <section className='home-clients-section'>
       <div className="container">
-        <div className="home-clients-content">
-          <Swiper
-            dir='ltr'
-            freeMode={true}
-            spaceBetween={10}
-            grabCursor={true}
-            slidesPerView={'auto'}
-            pagination={{ clickable: true }}
-            modules={[Pagination]}
-            autoplay={{ delay: 500, disableOnInteraction: false, }}
-            loop
-            className="clients-logo-swiper"
-          >
-            {
-              clientImages.map((image, index) => (
-                <SwiperSlide key={index} className='client-logo-box'>
-                  <Image src={image.image} alt="Client Logo" fill priority />
-                </SwiperSlide>
-              ))
-            }
-          </Swiper>
-        </div>
+        <ClientsCarousel data={logos} />
       </div>
     </section>
   )

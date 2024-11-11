@@ -7,7 +7,7 @@ import ContactFormSection from '@/app/components/Pages/ContactPage/ContactFormSe
 
 export default function ContactPage() : React.ReactElement {
   return <>   
-    <SubPageHeroBanner title='Contact Us' />
+    <SubPageHeroBanner pageId={45} />
     <ContactInfoSection />
     <ContactGoogleMap />
     <ContactFormSection />

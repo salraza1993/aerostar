@@ -1,22 +1,22 @@
-import React from 'react'
+import { graphqlRequest } from '@/lib/graphqlRequest';
 import Button from '../../common/Button'
 import Image from 'next/image'
+import { PageData } from '@/Interfaces/CommonTypes';
+import { AboutPageFistSectionDataTypes, GET_ABOUT_PAGE_FIRST_SECTION_CONTENT } from '@/Interfaces/AboutPageQueries';
 
-export default function About1stSection() : React.ReactElement {
+export default async function About1stSection() {
+  const response = await graphqlRequest<PageData<AboutPageFistSectionDataTypes>>(GET_ABOUT_PAGE_FIRST_SECTION_CONTENT);
+  const data = response?.pages?.edges[0]?.node?.aboutPage.firstSection;
+
   return <section className='about-1st-section'>
     <div className="container">
       <div className="about-1st__content">
         <div className="row">
           <div className="col-12 col-lg-6">
             <div className="about-section__text">
-              <small className='text-uppercase mb-2 d-block'><strong>Who we are...</strong></small>
-              <h2 className="title">Aerostar Aviation</h2>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum impedit incidunt quisquam laboriosam aspernatur quia! Qui nihil porro vero nemo id alias earum, cum dolorem omnis ratione a maiores doloremque sed placeat sequi magni dolorum necessitatibus itaque! Iure, recusandae natus eos impedit praesentium amet voluptatibus officia. 
-              </p>
-              <p>
-                Iste deserunt eveniet quas amet, voluptatibus quisquam blanditiis corporis ratione numquam molestiae ea cupiditate repellendus architecto id odit illo sequi nulla ipsum beatae assumenda excepturi exercitationem porro. Atque aperiam vitae veritatis excepturi quod ipsum aut libero alias obcaecati, amet provident autem, eos, earum facilis deserunt ut soluta molestiae.
-              </p>            
+              <small className='text-uppercase mb-2 d-block'><strong>{data.smallTitle}</strong></small>
+              <h2 className="title">{data.bigTitle}</h2>
+              <div dangerouslySetInnerHTML={{ __html: data.content}}></div>
               <Button
                 className="cta-button"
                 type='link'
@@ -28,7 +28,7 @@ export default function About1stSection() : React.ReactElement {
           </div>
           <div className="col-12 col-lg-6">
             <div className="about-section__image">
-              <Image src={'/images/about-1st-section-image.png'} alt='About Section Image' fill priority /> 
+              <Image src={data.image.node.sourceUrl} alt={data.image.node.altText} fill priority /> 
             </div>
           </div>
         </div>

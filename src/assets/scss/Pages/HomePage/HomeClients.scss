@@ -12,9 +12,17 @@
     .client-logo-box {
       width: 200px;
       height: 80px;
+      @include objectFit($fit: contain);
       img {
         filter: grayscale(1);
         mix-blend-mode: multiply;
+        transition: var(--transition);
+      }
+      &:hover {
+        img {
+          filter: none;
+          scale: 1.15;
+        }
       }
     }
     .clients-logo-swiper {

@@ -1,42 +1,39 @@
-import MissionIcon from "../../common/icons/MissionIcon";
-import VisionIcon from "../../common/icons/VisionIcon";
+import { ImageInterface, PageData } from "@/Interfaces/CommonTypes";
 import HomeFeaturesSection from "../HomePage/HomeFeaturesSection";
-
-export default function MissionVision() {
+import { graphqlRequest } from "@/lib/graphqlRequest";
+import { AboutPageMissionVisionDataTypes, GET_ABOUT_PAGE_MISSION_VISION } from "@/Interfaces/AboutPageQueries";
+import Image from "next/image";
+type DataTypes = {
+  content: string,
+  title: string,
+  icon: ImageInterface
+}
+export default async function MissionVision() {
+  const response = await graphqlRequest<PageData<AboutPageMissionVisionDataTypes>>(GET_ABOUT_PAGE_MISSION_VISION);
+  const missionVision = Array.isArray(response?.pages?.edges[0]?.node?.aboutPage.missionVision)
+    ? response?.pages?.edges[0]?.node?.aboutPage.missionVision as DataTypes[]
+    : [];
   return <section className='mission-vision-section'>
     <div className="container">
       <div className="mission-vision-content">
         <div className="row gy-3">
-          <div className="col-12 col-lg-6">
-            <div className='mission-vision-box'>
-              <div className="mission-vision-box__header">
-                <div className="__icon"><VisionIcon /></div>
-                <div className="title">
-                  <h2>Our <strong>Vision</strong></h2>
+          {
+            missionVision.map((card: DataTypes, index: number) => {
+              return <div className="col-12 col-lg-6" key={index}>
+                <div className='mission-vision-box'>
+                  <div className="mission-vision-box__header">
+                    <div className="__icon">
+                      <Image src={card.icon.node.sourceUrl} alt={card.icon.node.altText} width={100} height={100} />
+                    </div>
+                    <div className="title">
+                      <h2 className="fw-700 text-secondary">{card.title}</h2>
+                    </div>
+                  </div>
+                  <div className="mission-vision-box__body" dangerouslySetInnerHTML={{ __html: card.content}}></div>
                 </div>
               </div>
-              <div className="mission-vision-box__body">
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod dignissimos commodi nulla voluptatum itaque maiores officia fuga consequatur doloribus, quis tempora magnam aperiam esse necessitatibus sint obcaecati quasi, eaque doloremque. Quae labore at nemo minima repudiandae animi nihil velit? Fugit, facilis atque corporis, dicta quae temporibus alias cum sunt, suscipit rem accusantium? Ipsam aliquid, a, nemo, fugiat error ex odio optio ipsum beatae corporis quidem!
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="col-12 col-lg-6">
-            <div className='mission-vision-box'>
-              <div className="mission-vision-box__header">
-                <div className="__icon"><MissionIcon /></div>
-                <div className="title">
-                  <h2>Our <strong>Mission</strong></h2>
-                </div>
-              </div>
-              <div className="mission-vision-box__body">
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod dignissimos commodi nulla voluptatum itaque maiores officia fuga consequatur doloribus, quis tempora magnam aperiam esse necessitatibus sint obcaecati quasi, eaque doloremque. Quae labore at nemo minima repudiandae animi nihil velit? Fugit, facilis atque corporis, dicta quae temporibus alias cum sunt, suscipit rem accusantium? Ipsam aliquid, a, nemo, fugiat error ex odio optio ipsum beatae corporis quidem!
-                </p>
-              </div>
-            </div>
-          </div>
+            })
+          }
         </div>
       </div>
     </div>

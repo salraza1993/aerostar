@@ -8,7 +8,7 @@ import ContactForm from '@/app/components/Pages/ContactForm';
 
 export default function ServiceDetails() {
   return <>
-    <SubPageHeroBanner title='Services Details' />
+    <SubPageHeroBanner pageId={114} />
     <FirstSection />
     <ServicesPoints />
     <ServiceCounters />

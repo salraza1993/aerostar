@@ -91,7 +91,7 @@ export default function BlogPage(): React.ReactElement {
   return <>
     {/* <h1>{translate('title')}</h1> */}
     
-    <SubPageHeroBanner title='Blogs' />
+    <SubPageHeroBanner pageId={43} />
     <section className="blog-listing-section">
       <div className="container">
         <div className="blog-listing-content">
