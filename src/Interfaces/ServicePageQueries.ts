@@ -41,6 +41,54 @@ export const GET_SERVICE_PAGE_FORM_CONTENT = `
     }
   }
 `;
+export const GET_PAGE_CONTENT = `
+  query ServicesDetailQuery($name: String!) {
+    services(where: { name: $name }) {
+      edges {
+        node {
+          serviceDetails {
+            thirdSection {
+              content
+              counter
+              icon {
+                node {
+                  altText
+                  sourceUrl
+                }
+              }
+            }
+            firstSection {
+              bigTitle
+              content
+              image {
+                node {
+                  altText
+                  sourceUrl
+                }
+              }
+              smallTitle
+            }
+            secondSection {
+              bigTitle
+              content
+              smallTitle
+              cardsData {
+                content
+                heading
+                icon {
+                  node {
+                    altText
+                    sourceUrl
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
 
 export type ServicePageCounterDataTypes = {
   servicePage: {
@@ -59,4 +107,40 @@ export type ServicePageFormDataTypes = {
       smallTitle: string
     }
   }  
+}
+
+export type ServicesDetailDataType = {
+  services: {
+    edges: {
+      node: {
+        serviceDetails: {
+          thirdSection: ThirdSectionDataType[]
+          firstSection: FirstSectionDataType,
+          secondSection: SecondSectionDataType
+        }
+      }
+    }[]
+  }
+}
+export type ThirdSectionDataType = {
+  content: string,
+  counter: string,
+  icon: ImageInterface
+}
+export type FirstSectionDataType = {
+  bigTitle: string,
+  content: string,
+  image: ImageInterface
+  smallTitle: string,
+}
+export type SecondSectionDataType = {
+  bigTitle: string,
+  content: string,
+  smallTitle: string,
+  cardsData: ServiceCardDataType[] 
+}
+export type ServiceCardDataType = {
+  content: string,
+  heading: string,
+  icon: ImageInterface  
 }

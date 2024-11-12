@@ -14,8 +14,8 @@ export default async function About1stSection() {
         <div className="row">
           <div className="col-12 col-lg-6">
             <div className="about-section__text">
-              <small className='text-uppercase mb-2 d-block'><strong>{data.smallTitle}</strong></small>
-              <h2 className="title">{data.bigTitle}</h2>
+              <small className='text-uppercase mb-2 d-block'><strong>{data?.smallTitle}</strong></small>
+              <h2 className="title">{data?.bigTitle}</h2>
               <div dangerouslySetInnerHTML={{ __html: data.content}}></div>
               <Button
                 className="cta-button"
@@ -28,7 +28,7 @@ export default async function About1stSection() {
           </div>
           <div className="col-12 col-lg-6">
             <div className="about-section__image">
-              <Image src={data.image.node.sourceUrl} alt={data.image.node.altText} fill priority /> 
+              <Image src={data?.image?.node?.sourceUrl} alt={data?.image?.node?.altText} fill priority /> 
             </div>
           </div>
         </div>
