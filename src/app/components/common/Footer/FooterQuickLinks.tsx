@@ -2,16 +2,10 @@ import { graphqlRequest } from "@/lib/graphqlRequest";
 import FooterContentWrapper from "./FooterContentWrapper";
 import Link from "next/link";
 import { FooterQuickLinksDataTypes, FooterQuickLinksNodeTypes, GET_FOOTER_QUICK_LINKS } from "@/Interfaces/FooterLinks";
-type PageMenusTypes = {
-  label: string,
-  href: string,
-}
 
 export default async function FooterQuickLinks() {
   const response = await graphqlRequest<FooterQuickLinksDataTypes>(GET_FOOTER_QUICK_LINKS);
   const quickLinks = response?.menu?.menuItems?.edges;
-
-
 
   const blockHeading: string = 'Discover'
   // /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
