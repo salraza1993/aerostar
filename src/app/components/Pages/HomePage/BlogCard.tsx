@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 import Button from '../../common/Button'
+import Link from 'next/link'
 
 export type BlogCardContentTypes = {
   cardClassName?: string,
@@ -29,9 +30,11 @@ export default function BlogCard({title, description, image, date, comments, pat
       </ul>
     </div>
     <div className="blog-card__content">
-      <h6 className='content-title'>{ title }</h6>
+      <h6 className='content-title'>
+        <Link href={path}>{ title }</Link>
+      </h6>
       <div className="description">{description}</div>
-      <Button type='link' path={path} label='Read More' color='gray' icon='angle-right' iconPosition='after' />
+      {/* <Button type='link' path={path} label='Read More' color='gray' icon='angle-right' iconPosition='after' /> */}
     </div>
   </div>
 }

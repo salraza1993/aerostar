@@ -18,13 +18,17 @@ function FooterCopyrights() {
   return (
     <div className='footer-copy-writes'>
       <div className="block__start">
-        <p className='m-0'>© {currentYear} Copyrights by ASAS. All Rights Reserved</p>
+        <p className='m-0'>© {currentYear}
+          <span>Copyrights by <Link href={'/'} className='copyWrite-link fw-600'>Aerostar</Link></span>
+          <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+          <span>All Rights Reserved</span>
+        </p>
       </div>
       <div className="block__end">
         <ul className="copy-write">
           {copyWriteList.map((list, index) => (
             <li key={index} className="copy-write__list">
-              <Link className="copy-write__list__link" href={list.path}>{list.label}</Link>
+              <Link className="copy-write__list__link copyWrite-link" href={list.path}>{list.label}</Link>
             </li>
           ))}
         </ul>
@@ -34,3 +38,20 @@ function FooterCopyrights() {
 }
 
 export default FooterCopyrights
+
+// query NewQuery {
+//   menus {
+//     edges {
+//       node {
+//         menuItems {
+//           edges {
+//             node {
+//               label
+//               url
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// }

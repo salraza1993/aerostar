@@ -11,7 +11,7 @@ export default function ServicesPoints({ data }: { data: SecondSectionDataType }
         <div className="services-points-cards">
           {
             data?.cardsData?.map((card: ServiceCardDataType, index: number) => {
-              return <div className="services-points-card">
+              return <div className="services-points-card" key={index}>
                 <div className="services-points-card__icon">
                   <Image src={card?.icon?.node?.sourceUrl} alt={card?.icon?.node?.altText} width={50} height={50} />
                 </div>
