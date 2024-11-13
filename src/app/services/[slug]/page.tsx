@@ -5,13 +5,22 @@ import ServiceCounters from '@/app/components/Pages/ServicesPage/details/Service
 import ServicesPoints from '@/app/components/Pages/ServicesPage/details/ServicesPoints';
 import HomeClients from '@/app/components/Pages/HomePage/HomeClients';
 import ContactForm from '@/app/components/Pages/ContactForm';
+import { graphqlRequest } from '@/lib/graphqlRequest';
+import { FirstSectionDataType, GET_PAGE_CONTENT, SecondSectionDataType, ServicesDetailDataType, ThirdSectionDataType } from '@/Interfaces/ServicePageQueries';
 
-export default function ServiceDetails() {
+type Params = { slug: string }
+export default async function ServiceDetails({ params }: { params: Params }) {
+  const pageSlug: string = params.slug;
+  const response = await graphqlRequest<ServicesDetailDataType>(GET_PAGE_CONTENT, { name: pageSlug });
+  const firstSectionData : FirstSectionDataType = response?.services?.edges[0]?.node?.serviceDetails?.firstSection;
+  const secondSectionData : SecondSectionDataType = response?.services?.edges[0]?.node?.serviceDetails?.secondSection;
+  const thirdSectionData : ThirdSectionDataType[] = response?.services?.edges[0]?.node?.serviceDetails?.thirdSection;
+
   return <>
-    <SubPageHeroBanner title='Services Details' />
-    <FirstSection />
-    <ServicesPoints />
-    <ServiceCounters />
+    <SubPageHeroBanner pageId={114} />
+    { firstSectionData && <FirstSection data={firstSectionData} /> }
+    { secondSectionData && <ServicesPoints data={secondSectionData} /> }
+    { thirdSectionData && <ServiceCounters data={thirdSectionData} /> }
     <section className="form-container-section">
       <div className="container">
         <div className="form-container-content">
@@ -29,3 +38,4 @@ export default function ServiceDetails() {
     <HomeClients />
   </>
 }
+

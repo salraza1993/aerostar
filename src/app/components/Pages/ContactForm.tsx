@@ -220,7 +220,7 @@ export default function ContactForm() {
           {errors.message && <small className="text-danger">{errors.message}</small>}
         </div>
       </div>
-      <div className="input-block">
+      <div className="input-block submit-button-block">
         <button type="submit" className="btn text-uppercase btn-primary w-100 max-w-100 justify-content-center">
           <span className="">Submit</span>
           <i className="fa-solid fa-arrow-right"></i>

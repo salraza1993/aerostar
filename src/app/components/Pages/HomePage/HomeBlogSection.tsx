@@ -1,8 +1,16 @@
+import { GET_HOME_BLOG_CONTENT } from "@/Interfaces/HomePageQueries";
 import Button from "../../common/Button";
 import BlogCard, { BlogCardContentTypes } from "./BlogCard";
 import "@/assets/scss/Pages/HomePage/HomeBlog.scss";
+import { HomeBlogTitleQueryData } from "@/Interfaces/HomePageQueryTypes";
+import { PageData } from "@/Interfaces/CommonTypes";
+import { graphqlRequest } from "@/lib/graphqlRequest";
 
-export default function HomeBlogSection() {
+export default async function HomeBlogSection() {
+  const response = await graphqlRequest<PageData<HomeBlogTitleQueryData>>(GET_HOME_BLOG_CONTENT);
+  const blockHeading = response?.pages?.edges[0]?.node?.homePage?.hBlog;
+
+
   const blogCardData: BlogCardContentTypes[] = [
     {
       title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, ',
@@ -36,10 +44,8 @@ export default function HomeBlogSection() {
     <div className="container">
       <div className="home-blog-content">
         <div className="section-header">
-          <h2 className='merriweather fs-1 title'>
-            Latest <span className='title-color fw-700'>News</span>
-          </h2>
-          <Button type='link' path="/" label='View All' color='gray' icon='angle-right' iconPosition='after' />
+          <h2 className='merriweather fw-700 fs-1 title text-secondary'>{ blockHeading.title }</h2>
+          <Button type='link' path={blockHeading.button.url} label={blockHeading.button.title} color='gray' icon='angle-right' iconPosition='after' />
         </div>
         <div className="home-blog-lists">
           <div className="row g-3">

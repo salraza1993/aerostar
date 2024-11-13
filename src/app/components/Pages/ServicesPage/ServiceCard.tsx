@@ -1,6 +1,6 @@
-import React from 'react'
 import Button from '../../common/Button'
 import Image from 'next/image';
+import { HomeServiceCardQueryTypes } from '@/Interfaces/HomePageQueryTypes';
 
 export type cardProps = {
   image: string,
@@ -10,19 +10,20 @@ export type cardProps = {
   description: string
 }
 
-export default function ServiceCard({ data } : {data: cardProps}) : React.ReactElement {
+export default function ServiceCard({ data }: { data: HomeServiceCardQueryTypes }): React.ReactElement {
+  const cardContent = data?.node?.content;
+  const cardTitle = data?.node?.title;
+  const cardImage = data.node?.featuredImage?.node;
+  const slug = data?.node?.slug;
   return <div className='service-card'>
     <div className='service-card__image'>
-      <Image src={data.image} alt={data.imageAlt} fill priority />
+      <Image src={cardImage.sourceUrl} alt={cardImage.altText} fill priority />
     </div>
     <div className='service-card__content'>
-      <h4 className='title'>{data.title}</h4>
-      <div className="description">
-        <p className=''>{data.description}</p>
+      <h5 className='title'>{cardTitle}</h5>
+      <div className="description" dangerouslySetInnerHTML={{ __html: cardContent}}>
       </div>
-      <Button
-        type='link'
-        path={data.path} color='outline-gray' label='Read More' />
+      <Button type='link' path={`services/${slug}`} color='outline-gray' label='Read More' />
     </div>
   </div>
 }

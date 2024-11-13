@@ -54,9 +54,16 @@
     .content-title {
       position: relative;
       font-family: var(--kanit-font);
+      a {
+        &:hover {
+          color: var(--accent);
+          text-decoration: underline;
+        }
+      }
     }
 
     .description {
+      line-height: normal;
       @include multiline(3);
       margin-block-end: calc(var(--block-padding-y) / 2);
     }
@@ -65,8 +72,7 @@
     &.homeBlogCard {
       display: flex;
       gap: var(--block-padding-y);
-      .blog-card__image {
-      }
+      // .blog-card__image {}
       .blog-card__content {
         margin-block-start: 0;
       }

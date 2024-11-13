@@ -6,15 +6,15 @@ import HomeMapsSection from './components/Pages/HomePage/HomeMapsSection';
 import HomeBlogSection from './components/Pages/HomePage/HomeBlogSection';
 import HomeClients from './components/Pages/HomePage/HomeClients';
 
-
-// This page only renders when the app is built statically (output: 'export')
-export default function RootPage() {
-  return <>
-    <HomeBanners />
-    <HomeAbout />
-    <HomeServices />
-    <HomeMapsSection />
-    <HomeBlogSection />
-    <HomeClients />
-  </>
+export default async function RootPage() {
+  return (
+    <>
+      <HomeBanners />
+      <HomeAbout />
+      <HomeServices />
+      <HomeMapsSection />
+      <HomeBlogSection />
+      <HomeClients />
+    </>
+  );
 }

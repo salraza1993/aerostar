@@ -10,14 +10,23 @@
     position: relative;
     width: 100%;
     .client-logo-box {
+      position: relative;
       width: 200px;
       height: 80px;
+      @include objectFit($fit: contain);
       img {
         filter: grayscale(1);
         mix-blend-mode: multiply;
+        transition: var(--transition);
+      }
+      &:hover {
+        img {
+          filter: none;
+          scale: 1.15;
+        }
       }
     }
-    .clients-logo-swiper {
+    .clients-logo-swiper, .clients-logo {
       --swiper-pagination-top: calc(100% - 10px);
       --swiper-theme-color: var(--accent);
       padding-block-end: calc(var(--block-padding-y) / 1);
@@ -28,6 +37,10 @@
         justify-content: center;
         align-items: center;
       }
+    }
+    .clients-logo {
+      display: flex;
+      justify-content: center;
     }
   }
 }

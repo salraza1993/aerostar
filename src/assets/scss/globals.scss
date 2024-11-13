@@ -94,6 +94,7 @@ small {
 }
 
 .contact-form {
+  --lable-width: 110px;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -109,16 +110,19 @@ small {
     max-width: calc(250px + 2vw) !important;
     margin-inline-start: auto;
   }
-
+  
   .input-block {
     display: flex;
     line-height: normal;
+    &:is(.submit-button-block) {
+      padding-inline-start: var(--lable-width);
+    }
     @media (width < #{$small}) {
       flex-direction: column;
     }
     .form-label {
       flex-shrink: 0;
-      min-width: 110px;
+      min-width: var(--lable-width);
       @media (width > #{$small}) {
         margin: 0;
       }
@@ -142,9 +146,8 @@ small {
   .btn {
     --bs-btn-padding-x: 2rem;
     --bs-btn-padding-y: 0.8rem;
-    min-width: 250px;
+    min-width: 100%;
     margin-block-start: 1rem;
-    margin-inline: auto;
     justify-content: center;
     text-transform: uppercase;
   }

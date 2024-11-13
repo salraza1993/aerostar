@@ -8,9 +8,8 @@ import HomeBlogSection from '@/app/components/Pages/HomePage/HomeBlogSection';
 import HomeClients from '@/app/components/Pages/HomePage/HomeClients';
 
 export default function AboutPage() : React.ReactElement {
-  const aboutBannerPath = '/images/sub-banner-image.jpg';
   return <>
-    <SubPageHeroBanner title={'About Us'} banner={aboutBannerPath} />
+    <SubPageHeroBanner pageId={39} />
     <About1stSection />
     <AboutServiceSection />
     <MissionVision />

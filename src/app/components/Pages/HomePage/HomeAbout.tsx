@@ -1,36 +1,36 @@
-"use client"
 import Image from "next/image";
 import Button from "../../common/Button"
+import { graphqlRequest } from "@/lib/graphqlRequest";
+import { HomeAboutQueryData } from "@/Interfaces/HomePageQueryTypes";
+import { PageData } from "@/Interfaces/CommonTypes";
+import { GET_HOME_ABOUT_CONTENT } from "@/Interfaces/HomePageQueries";
 
-function HomeAbout(): React.ReactElement {
-  const airplaneImage: string = "/images/airplane-about.png";
+export default async function HomeAbout() {
+  const response = await graphqlRequest<PageData<HomeAboutQueryData>>(GET_HOME_ABOUT_CONTENT);
+  const data = response?.pages?.edges[0]?.node?.homePage?.hAbout;
+  const image = data?.image?.node;
+  const ctaButton = data?.button;
+
   return (
     <section className="home-about-section">
       <div className="container">
         <div className="home-about-content">
           <div className="block__start">
             <div className="home-about-content__title">
-              <h6 className="kanit">Who We Are</h6>
-              <h2 className="merriweather title fs-1 fw-700">Our Journey</h2>
+              <p className="kanit">{data.titleSmall}</p>
+              <h2 className="merriweather title fs-1 fw-700">{data.title}</h2>
             </div>
             <div className="airplane-image">
-              <Image src={airplaneImage} fill alt="Airplane About Image" />
+              <Image src={image.sourceUrl} alt={image.altText} fill />
             </div>
           </div>
           <div className="block__end">
             <div className="home-about-text">
-              <div className="text kanit">
-                <p>
-                  Aero Star provides airlines with comprehensive ground handling services accredited by Egyptian Civil Aviation Authority. NSAS has a heritage of leadership, relationships in airports across the country.
-                </p>
-                <p>
-                  Our strong cooperation with the authorities (ECAA and EAC) helps to sooth and facilitate the air carrier’s operating procedures.
-                </p>
-              </div>
+              <div className="text kanit" dangerouslySetInnerHTML={{ __html: data.content }}></div>
               <Button
                 type={'link'}
-                path={'about'}
-                label={'Know More'}
+                path={ctaButton.url}
+                label={ctaButton.title}
                 icon="angle-right"
                 iconPosition="after"
                 color={'outline-dark'} />
@@ -41,5 +41,3 @@ function HomeAbout(): React.ReactElement {
     </section>
   )
 }
-
-export default HomeAbout

@@ -10,7 +10,7 @@
     position: relative;
     width: 100%;
     .section-header {
-      margin-block-end: var(--block-padding-y);
+      margin-block-end: calc(var(--block-padding-y) / 1.5);
     }
   }
   .home-blog-lists {
