@@ -22,7 +22,7 @@ export default async function SubPageHeroBanner({ pageId = 114 }: Props) {
     }
   `);
 
-  const title:string = response?.pages?.edges[0]?.node?.title
+  const title = response?.pages?.edges[0]?.node?.title
   const image = response?.pages?.edges[0]?.node?.featuredImage?.node;
   const aboutBannerPath = '/images/sub-banner-image.jpg';
   

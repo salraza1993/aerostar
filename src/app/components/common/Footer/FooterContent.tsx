@@ -1,17 +1,19 @@
+import { FooterSettingsDataType, GET_FOOTER_CONTENT } from "@/Interfaces/FooterQueries";
 import FooterContentWrapper from "./FooterContentWrapper";
+import { ImageInterface, PageData } from "@/Interfaces/CommonTypes";
+import { graphqlRequest } from "@/lib/graphqlRequest";
 
-function FooterContent(): React.ReactElement {
-  const logoLight:string = '/images/logo-light.svg';
+type Props = {
+  content: string,
+  featuredImage: ImageInterface
+}
+export default async function FooterContent() {
+  const response = await graphqlRequest<PageData<FooterSettingsDataType>>(GET_FOOTER_CONTENT);
+  const footerContent = response?.pages?.edges[0]?.node;  
   return <FooterContentWrapper classes="footer-about-content">
     <picture className='footer-logo'>
-      <img src={logoLight} alt="Header Logo" />
+      <img src={footerContent?.featuredImage?.node?.sourceUrl} alt={footerContent?.featuredImage?.node?.altText} />
     </picture>
-    <h6 className='merriweather fw-700'>About AeroStar</h6>
-    <p>
-      AeroStar is a leading global leader in the development and operation of
-      advanced aircraft and transportation systems.
-    </p>      
+    <div dangerouslySetInnerHTML={{ __html: footerContent?.content }}></div>
   </FooterContentWrapper>
 }
-
-export default FooterContent

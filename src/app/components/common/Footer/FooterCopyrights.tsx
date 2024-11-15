@@ -11,15 +11,15 @@ function FooterCopyrights() {
   const currentYear = new Date().getFullYear();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [copyWriteList, setCopyWriteList] = useState<copyWriteListType[]>([
-    { label: 'Terms & Conditions', path: '/terms-conditions' },
+    { label: 'Terms & Conditions', path: '/terms-and-conditions' },
     { label: 'Privacy Policies', path: '/privacy-policies' },
     { label: 'FAQ’s', path: '/faqs' },
   ]);
   return (
     <div className='footer-copy-writes'>
       <div className="block__start">
-        <p className='m-0'>© {currentYear}
-          <span>Copyrights by <Link href={'/'} className='copyWrite-link fw-600'>Aerostar</Link></span>
+        <p className='m-0'>
+          © {currentYear} <span>Copyrights by <Link href={'/'} className='copyWrite-link fw-600'>Aerostar</Link></span>
           <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
           <span>All Rights Reserved</span>
         </p>

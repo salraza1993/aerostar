@@ -1,37 +1,29 @@
-import React from 'react'
+import { PageData } from "@/Interfaces/CommonTypes";
+import { FooterCardsTypes, FooterSettingsDataType, GET_FOOTER_CONTENT } from "@/Interfaces/FooterQueries";
+import { graphqlRequest } from "@/lib/graphqlRequest";
 
-export default function FooterCTAsSection() : React.ReactElement {
+export default async function FooterCTAsSection() {
+  const response = await graphqlRequest<PageData<FooterSettingsDataType>>(GET_FOOTER_CONTENT);
+  const footerContent = response?.pages?.edges[0]?.node;  
+  const footerCards = Array.isArray(footerContent?.footerSettings.footerCards) ? footerContent?.footerSettings.footerCards as FooterCardsTypes[] : [];
   return <div className="ctas-boxes-container">
     <div className="container">
       <div className="ctas-boxes-content">
-        <div className="ctas-box contact">
-          <div className="ctas-box__icon"><i className="fa-solid fa-phone"></i></div>
-          <div className="ctas-box__content">
-            <p className='kanit fw-500 m-0 title'>Give Us A Call</p>
-            <a href="tel:+971551532975">Get in touch</a>
-          </div>
-        </div>
-        <div className="ctas-box email">
-          <div className="ctas-box__icon"><i className="fa-solid fa-envelope"></i></div>
-          <div className="ctas-box__content">
-            <p className='kanit fw-500 m-0 title'>Send Us A Message</p>
-            <a href="mailto:occ@aerostar-aviation.com">occ@aerostar-aviation.com</a>
-          </div>
-        </div>
-        <div className="ctas-box map">
-          <div className="ctas-box__icon"><i className="fa-solid fa-map-marker-alt"></i></div>
-          <div className="ctas-box__content">
-            <p className='kanit fw-500 m-0 title'>Reach Us</p>
-            <span>NSAS Tourism, Dubai, UAE</span>
-          </div>
-        </div>
-        <div className="ctas-box working">
-          <div className="ctas-box__icon"><i className="fa-solid fa-clock"></i></div>
-          <div className="ctas-box__content">
-            <p className='kanit fw-500 m-0 title'>Working Hours</p>
-            <span>09:00 AM - 18:00 PM</span>
-          </div>
-        </div>                
+        {
+          footerCards?.map((data: FooterCardsTypes, index: number) => {
+            return <div className={`ctas-box ${data.type}`} key={index}>
+              <div className="ctas-box__icon"><i className="fa-solid fa-phone"></i></div>
+              <div className="ctas-box__content">
+                <p className='kanit fw-500 m-0 title'>{data.label}</p>
+                {
+                  data.type === 'phone' ? <a href={`tel:${data.value.trim()}`} className="copyWrite-link">{data.value}</a> : 
+                    data.type === 'email' ? <a href={`mailto:${data.value}`} className="copyWrite-link">{data.value}</a> :
+                      <span>{data.value}</span>
+                }
+              </div>
+            </div>
+          })
+        }
       </div>
     </div>
   </div>

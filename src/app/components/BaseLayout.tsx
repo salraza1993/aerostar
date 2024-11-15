@@ -5,7 +5,7 @@ import { Kanit, Roboto, Open_Sans, Merriweather, Cairo, Amiri } from "@/fonts/Fo
 
 type Props = { children: ReactNode };
 
-export default async function BaseLayout({ children }: Props) {
+export default function BaseLayout({ children }: Props) {
   const bodyFonts = [
     'main-body',
     Kanit.variable,

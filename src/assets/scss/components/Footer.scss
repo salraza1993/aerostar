@@ -100,9 +100,10 @@
         .footer-links {
           flex: 1;
           display: flex;
-          flex-direction: column;
+          flex-wrap: wrap;
           gap: 0.4rem;
           &__list {
+            width: 48%;
             &__link {
               position: relative;
               max-width: max-content;
@@ -218,7 +219,10 @@
       }
     }
   }
-
+  .copyWrite-link {
+    position: relative;
+    @include anchorHover();
+  }
 
 
   .footer-copy-writes {
@@ -230,11 +234,6 @@
     padding-block-start: calc(var(--footer-padding-y) / 1.5);
     margin-block-start: calc(var(--footer-padding-y) / 1.5);
     border-block-start: 1px solid rgba(var(--footer-color-rgb), 0.25);
-    
-    .copyWrite-link {
-      position: relative;
-      @include anchorHover();
-    }
     
     .copy-write {
       display: flex;

@@ -172,3 +172,104 @@ small {
     align-items: center;
   }
 }
+
+.terms-and-conditions-section {
+  position: relative;
+  width: 100%;
+  padding-block: calc(1rem + 1vw);
+  background-color: var(--bg-color);
+  h2, h3, h4, h5, h6 { font-weight: 700; font-family: var(--merriweather-font);}
+
+  .terms-and-conditions-content {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    margin-inline: auto;
+  }
+}
+
+.faqs-section {
+  position: relative;
+  padding-block: calc(1rem + 1vw);
+  .accordion-container {
+    --grid-row-height: 0fr;
+    --accordion-body-pad-x: 1rem;
+    --accordion-body-pad-y: 0;
+    --accordion-border-radius: 0.5rem;
+    --accordion-header-bg: var(--primary-100);
+    --accordion-header-active-bg: rgba(var(--accent-rgb), 0.1);
+    --accordion-header-active-color: var(--accent);
+    --accordion-active-bg-color: var(--primary-100);
+    --accordion-bg-color: var(--body-bg-color);
+
+    position: relative;
+    max-width: var(--container-max-width);
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 990px;
+    margin-inline: auto;
+  
+    .accordion-block {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--accordion-border-radius);
+      background-color: var(--accordion-bg-color);
+      box-shadow: 0 0 0 1px var(--border-color);
+  
+      &__header {
+        border-radius: inherit;
+        padding: 1rem;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        gap: 1rem;
+        background-color: var(--accordion-header-bg);
+        transition: all 0.3s ease-in;
+        cursor: pointer;
+        &:is(.active) {
+          border-radius: 0;
+          color: var(--accordion-header-active-color);
+        }
+  
+        * {
+          pointer-events: none;
+        }
+  
+        h4 {
+          margin: 0;
+        }
+      }
+  
+      &__body {
+        display: grid;
+        grid-template-rows: var(--grid-row-height);
+        transition: grid-template-rows 450ms ease-out, padding-block 450ms ease-out;
+        padding-inline: var(--accordion-body-pad-x);
+        padding-block: var(--accordion-body-pad-y);
+  
+        .__inner {
+          overflow: hidden;
+          p {
+            margin: 0;
+            line-height: 1.35
+          }
+        }
+      }
+  
+      &.is-opened,
+      &:focus,
+      &:focus-within {
+        --grid-row-height: 1fr;
+        --accordion-body-pad-y: 1rem;
+        --accordion-header-bg: var(--accordion-header-active-bg);
+        --accordion-bg-color: var(--accordion-active-bg-color);
+        z-index: 1;
+        box-shadow: 0 0 0 1px var(--accent);
+      }
+    }
+  }
+}
