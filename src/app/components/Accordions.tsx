@@ -8,7 +8,7 @@ export default function Accordions({ data }: { data: AccordionDataTypes[] }) {
   return <div className="accordion-container">
     {
       data.map((card: AccordionDataTypes, index: number) => {
-        return <div className={`accordion-block ${activeIndex === index ? 'is-opened' : ''}`}>
+        return <div className={`accordion-block ${activeIndex === index ? 'is-opened' : ''}`} key={index}>
           <div className={`accordion-block__header ${activeIndex === index ? 'active' : ''}`} onClick={() => setActiveIndex(index)}>
             <h6 className="merriweather m-0 fw-700">{index + 1}. {card.title}</h6>
             <i className={`fa-solid fa-${activeIndex === index ? 'minus' : 'plus'}`}></i>
