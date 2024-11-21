@@ -6,7 +6,7 @@ type Props = { pageId?: number }
 export default async function SubPageHeroBanner({ pageId = 114 }: Props) {
   const response = await graphqlRequest<PageData<SubBannerQueryData>>(`
     query CommonQueries {
-      pages(where: {id: ${pageId}}) {
+      pages(where: {id: ${String(pageId)}}) {
         edges {
           node {
             title
