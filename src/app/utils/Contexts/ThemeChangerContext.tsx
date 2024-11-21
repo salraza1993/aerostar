@@ -22,8 +22,8 @@ export function ThemeChangerProvider({ children }: { children: ReactNode }): Rea
   const defaultAppearanceValue: string = 'auto';
   const [listMenu, setListMenu] = useState<ListMenuInterface[]>([
     { type: 'auto', label: 'OS Default', icon: 'desktop', selected: true },
-    { type: 'dark', label: 'Dark', icon: 'moon', selected: false },
-    { type: 'light', label: 'Light', icon: 'sun', selected: false },
+    { type: 'dark', label: 'Dark', icon: 'moon-stars', selected: false },
+    { type: 'light', label: 'Light', icon: 'sun-bright', selected: false },
   ]);
   const [currentMode, setCurrentMode] = useState(defaultAppearanceValue);
 

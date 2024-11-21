@@ -15,10 +15,10 @@ function ThemeChanger({ }): React.ReactElement {
   const selectedModeIconHandler = (mode: string): void => {
     switch (mode) {
       case 'dark':
-        setSelectedModeIcon('moon')
+        setSelectedModeIcon('moon-stars')
         break;    
       case 'light':
-        setSelectedModeIcon('sun')
+        setSelectedModeIcon('sun-bright')
         break;
       default:
         setSelectedModeIcon('desktop')

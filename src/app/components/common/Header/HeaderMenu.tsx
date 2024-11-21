@@ -32,7 +32,7 @@ export default function HeaderMenu({  clickedHandle} : Props) {
         { label: 'Service 3', path: '/services/service-3', isActive: false },
       ],
     },
-    { label: 'News', path: '/blogs', isActive: false },
+    // { label: 'News', path: '/blogs', isActive: false },
     { label: 'Contact', path: '/contact', isActive: false },
   ]);
 
