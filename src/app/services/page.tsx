@@ -37,4 +37,3 @@ export default async function ServicesPage() {
     <HomeClients />
   </> 
 }
-export const dynamicParams = true; // Enables dynamic params for static rendering

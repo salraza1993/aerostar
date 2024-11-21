@@ -6,7 +6,6 @@ export default function BlogDetails() {
   const blogInnerImage1 = '/images/blog-image-1.png';
   const blogInnerImage2 = '/images/blog-image-2.png';
   return <>
-    {/* <SubPageHeroBanner title='Blog Details' /> */}
     <section className="blog-details-section">
       <div className="blog-details-banner">
         <div className="blog-details-banner__image">

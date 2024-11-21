@@ -15,4 +15,3 @@ export default function ContactPage() : React.ReactElement {
   </>
 }
 
-export const dynamicParams = true; // Enables dynamic params for static rendering

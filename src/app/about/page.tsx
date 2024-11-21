@@ -17,4 +17,3 @@ export default function AboutPage() : React.ReactElement {
     <HomeClients />
   </>
 }
-export const dynamicParams = true; // Enables dynamic params for static rendering
