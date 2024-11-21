@@ -1,14 +1,24 @@
 "use client"
-import { useRef, useState } from 'react';
-// import EgyptMap from '../elements/EgyptMap'
+import { CSSProperties, useState } from 'react';
 import EgyptMapStroke from '../elements/EgyptMapStroke'
 import Link from 'next/link'
-import useClickOutside from './customHooks/useClickOutside';
-
+interface CustomCSSProperties extends CSSProperties {
+  '--axis-y'?: string;
+  '--axis-x'?: string;
+}
+interface AnchorDataTypes {
+  id: string;
+  x: number;
+  y: number;
+  selected: boolean;
+  data: {
+    title: string;
+    address: string;
+    services: string[];
+  };
+}
 export default function HomeRegionalMap() {
-  const elementRef = useRef<HTMLLIElement>(null);  
-  const [anchorIsOpen, setAnchorIsOpen] = useState<boolean>(false);
-  const [anchors, setAnchors]: any[] = useState([
+  const [anchors, setAnchors] = useState<AnchorDataTypes[]>([
     {
       id: 'anchor1',
       x: 55,
@@ -55,22 +65,22 @@ export default function HomeRegionalMap() {
     },
   ]);
 
-  const elementStyles = (x:number, y:number) => {
+  const elementStyles = (x: number, y: number): CustomCSSProperties => {
     return {
       '--axis-y': `${y}%`,
-      "--axis-x": `${x}%`
-    }
-  }
-  const anchorHandler = (thisItem: any) => {
-    const updatedAnchors = anchors.map((item: any) => ({
+      '--axis-x': `${x}%`,
+    };
+  };
+  const anchorHandler = (thisItem: AnchorDataTypes) => {
+    const updatedAnchors = anchors.map((item: AnchorDataTypes) => ({
       ...item,
       selected: item.id === thisItem.id,
     }));
     setAnchors(updatedAnchors);
   };
 
-  const removeActiveAnchorsHandler = (thisItem: any) => {
-    const updatedAnchors = anchors.map((item: any) => ({
+  const removeActiveAnchorsHandler = (thisItem: AnchorDataTypes) => {
+    const updatedAnchors = anchors.map((item: AnchorDataTypes) => ({
       ...item,
       selected: item.id === thisItem.id ? false : false
     }));
@@ -95,14 +105,11 @@ export default function HomeRegionalMap() {
   return <div className="home-regional-map-container">
       <EgyptMapStroke />
       <ul className="anchors">
-        {anchors.map((anchor:any, index:number) => (
+        {anchors.map((anchor:AnchorDataTypes, index:number) => (
           <li
             key={index}
             className={`anchors__list ${anchor.selected ? "selected" : ""}`}
-            style={{
-              "--axis-y": `${anchor.y}%`,
-              "--axis-x": `${anchor.x}%`,
-            }}
+            style={elementStyles(anchor.x, anchor.y)}
             onMouseLeave={() => removeActiveAnchorsHandler(anchor)}
             onMouseEnter={() => anchorHandler(anchor)}
             onClick={() => anchorHandler(anchor)}
@@ -119,7 +126,7 @@ export default function HomeRegionalMap() {
                   <hr />
                   <p className="fw-bold">Filter by services</p>
                   <ul className="service-list">
-                    {anchor.data.services.map((service:any, idx:number) => (
+                    {anchor.data.services.map(( service: string, idx:number) => (
                       <li key={idx} className="service-list__item custom-tooltip-container" >
                         <span className="custom-tooltip">{service}</span>
                         <i
