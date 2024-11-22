@@ -13,7 +13,6 @@ export default async function RootPage() {
       <HomeAbout />
       <HomeServices />
       <HomeMapsSection />
-      <HomeBlogSection />
       <HomeClients />
     </>
   );

@@ -169,10 +169,10 @@
 }
 
 .mission-vision-section {
-  --map-height: 420px;
+  --map-height: 380px;
   --map-margin-height: calc(var(--map-height) / 2);
   position: relative;
-  padding-block: var(--block-padding);
+  padding-block-end: var(--block-padding);
 
   >.container {
     position: relative;
@@ -181,18 +181,20 @@
 
   .mission-vision-content {
     position: relative;
+    display: flex;
+    gap: var(--block-padding);
     .mission-vision-box {
       position: relative;
-      background-color: var(--body-bg);
+      background-color: var(--primary-100);
       height: var(--map-height);
       border-radius: calc(var(--border-radius) * 2);
       border: 1px solid var(--border-color);
       padding: var(--block-padding);
       display: flex;
       flex-direction: column;
-      max-height: max-content;
       gap: 1rem;
       gap: var(--block-padding);
+      min-width: 35%;
       &__header {
         display: flex;
         align-items: center;

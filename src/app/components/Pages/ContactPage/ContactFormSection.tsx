@@ -6,7 +6,7 @@ import { graphqlRequest } from '@/lib/graphqlRequest';
 export default async function ContactFormSection() {
   const response = await graphqlRequest<PageData<ContactPageFormHeadingType>>(GET_CONTACT_PAGE_FORM_HEADING);
   const formHeading = response?.pages?.edges[0]?.node?.contactPage?.formHeading;
-  return <section className='contact-form-section'>
+  return <section className='contact-form-section' id="queryForm">
     <div className="container">
       <div className="contact-form-content">
         <div className="block__start">

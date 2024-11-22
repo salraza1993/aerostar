@@ -17,7 +17,7 @@ export default function ServiceCard({ data }: { data: HomeServiceCardQueryTypes 
   const slug = data?.node?.slug;
   return <div className='service-card'>
     <div className='service-card__image'>
-      <Image src={cardImage.sourceUrl} alt={cardImage.altText} fill priority />
+      {cardImage?.sourceUrl && <Image src={cardImage?.sourceUrl} alt={cardImage?.altText} fill priority />}
     </div>
     <div className='service-card__content'>
       <h5 className='title'>{cardTitle}</h5>

@@ -11,9 +11,7 @@ export default function AboutPage() : React.ReactElement {
   return <>
     <SubPageHeroBanner pageId={39} />
     <About1stSection />
-    <AboutServiceSection />
     <MissionVision />
-    <HomeBlogSection />
     <HomeClients />
   </>
 }

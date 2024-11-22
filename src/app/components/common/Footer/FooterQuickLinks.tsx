@@ -14,7 +14,7 @@ export default async function FooterQuickLinks() {
   return <FooterContentWrapper classes="footer-links-container" title={menuHeading}>
     <ul className="footer-links">
       {
-        quickLinks.map(( label: FooterQuickLinksNodeTypes, index: number ) => (
+        quickLinks?.map(( label: FooterQuickLinksNodeTypes, index: number ) => (
           <li className="footer-links__list" key={index}>
             <Link className="footer-links__list__link" href={label?.node?.url}>{label?.node?.label}</Link>
           </li>

@@ -16,24 +16,6 @@ export default async function ServicesPage() {
   return <>   
     <SubPageHeroBanner pageId={41} />
     <ServicesCardBlock />
-    <CounterBlock />
-    <section className="form-container-section">
-      <div className="container">
-        <div className="form-container-content">
-          <div className="form-container">
-            <div className="content">
-              <p className='small-title m-0 kanit fw-600 text-primary text-uppercase'>{ formContent.smallTitle }</p>
-              <h2 className='merriweather text-secondary fw-700 text-balance title'>{ formContent.bigTitle }</h2>
-              <div dangerouslySetInnerHTML={{ __html: formContent.content}}></div>
-            </div>
-            <div className="form-block">
-              <ContactForm />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <HomeBlogSection />
     <HomeClients />
   </> 
 }

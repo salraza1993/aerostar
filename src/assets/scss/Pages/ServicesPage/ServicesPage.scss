@@ -162,7 +162,8 @@
       max-width: 600px;
       border-radius: calc(var(--border-radius) * 2);
       margin-inline: auto;
-      margin-block-start: calc(0px - calc(var(--overlay-extra-margin) / 1.15));
+      margin-block-start: calc(var(--block-padding) / 1.5);
+      // margin-block-start: calc(0px - calc(var(--overlay-extra-margin) / 1.15));
       @include cardShadow();
       padding: var(--block-padding);
       .contact-form {
@@ -238,7 +239,7 @@
   text-align: center;
 
   .services-points-cards {
-    --column-grid: 3;
+    --column-grid: 2;
     position: relative;
     text-align: left;
     margin-block-start: var(--block-padding);

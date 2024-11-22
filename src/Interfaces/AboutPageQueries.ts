@@ -48,6 +48,28 @@ export const GET_ABOUT_PAGE_MISSION_VISION = `
   }
 `;
 
+export const GET_FEATURES_CONTENT = `
+  query HomeRegionalContentQuery {
+    pages(where: {id: ${pageId}}) {
+      edges {
+        node {
+          aboutPage {
+            featureList {
+              content
+              title
+              icon {
+                node {
+                  altText
+                  sourceUrl
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
 
 export type AboutPageFistSectionDataTypes = {
   aboutPage: {
@@ -62,6 +84,16 @@ export type AboutPageFistSectionDataTypes = {
 export type AboutPageMissionVisionDataTypes = {
   aboutPage: {
     missionVision: {
+      content: string,
+      title: string,
+      icon: ImageInterface
+    }
+  }
+}
+
+export type AboutFeaturesQueryData = {
+  aboutPage: {
+    featureList: {
       content: string,
       title: string,
       icon: ImageInterface

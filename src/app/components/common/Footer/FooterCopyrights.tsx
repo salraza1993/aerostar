@@ -13,7 +13,7 @@ function FooterCopyrights() {
   const [copyWriteList, setCopyWriteList] = useState<copyWriteListType[]>([
     { label: 'Terms & Conditions', path: '/terms-and-conditions' },
     { label: 'Privacy Policies', path: '/privacy-policies' },
-    { label: 'FAQ’s', path: '/faqs' },
+    // { label: 'FAQ’s', path: '/faqs' },
   ]);
   return (
     <div className='footer-copy-writes'>
