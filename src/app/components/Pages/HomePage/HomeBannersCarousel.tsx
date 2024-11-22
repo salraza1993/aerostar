@@ -27,7 +27,7 @@ export default function HomeBannersCarousel({ data }: {data: SliderBannersType[]
               const ctaButton = banner?.sliderGraphQL?.button
               return <SwiperSlide key={index} className='home-swiper-slider__slide'>
                 <div className="slide-image">
-                  <Image src={image.sourceUrl} alt={image.altText} fill={true} priority={true} />
+                  <Image src={image?.sourceUrl || ""} alt={image?.altText || ""} fill={true} priority={true} />
                 </div>
                 <div className="slider-content">
                   <div className="container">
@@ -56,7 +56,7 @@ export default function HomeBannersCarousel({ data }: {data: SliderBannersType[]
           const ctaButton = banner?.sliderGraphQL?.button
           return <div key={index} className='home-swiper-slider__slide'>
             <div className="slide-image">
-              <Image src={image.sourceUrl} alt={image.altText} fill={true} priority={true} />
+              <Image src={image?.sourceUrl || ""} alt={image.altText || ""} fill={true} priority={true} />
             </div>
             <div className="slider-content">
               <div className="container">

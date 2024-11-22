@@ -28,7 +28,7 @@ export default function HomeServiceCards({ data }: { data: HomeServiceCardQueryT
             const slug = cardItem?.node?.slug;
             return <SwiperSlide className="home-service-card" key={index}>
               <div className="card-image">
-                <Image src={cardImage.sourceUrl} alt={cardImage.altText} fill priority />
+                <Image src={cardImage?.sourceUrl || ""} alt={cardImage?.altText || ""} fill priority />
               </div>
               <div className="card-body">
                 <div className="card-title">

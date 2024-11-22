@@ -8,7 +8,7 @@ export default async function FooterContent() {
   const footerContent = response?.pages?.edges[0]?.node;  
   return <FooterContentWrapper classes="footer-about-content">
     <picture className='footer-logo'>
-      <img src={footerContent?.featuredImage?.node?.sourceUrl} alt={footerContent?.featuredImage?.node?.altText} />
+      <img src={footerContent?.featuredImage?.node?.sourceUrl || ''} alt={footerContent?.featuredImage?.node?.altText} />
     </picture>
     <div dangerouslySetInnerHTML={{ __html: footerContent?.content }}></div>
   </FooterContentWrapper>

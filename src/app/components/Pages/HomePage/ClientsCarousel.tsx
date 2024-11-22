@@ -25,7 +25,7 @@ export default function ClientsCarousel({ data }: { data: ClientLogoType[] }): R
       {
         data.map((image: ClientLogoType, index:number) => (
           <SwiperSlide key={index} className='client-logo-box'>
-            <Image src={image?.sourceUrl} alt={image?.altText} fill priority />
+            <Image src={image?.sourceUrl || ""} alt={image?.altText || ""} fill priority />
           </SwiperSlide>
         ))
       }

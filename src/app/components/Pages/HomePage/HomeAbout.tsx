@@ -21,7 +21,7 @@ export default async function HomeAbout() {
               <h2 className="merriweather title fs-1 fw-700">{data.title}</h2>
             </div>
             <div className="airplane-image">
-              <Image src={image.sourceUrl} alt={image.altText} fill />
+              <Image src={image?.sourceUrl || ""} alt={image?.altText || ""} fill />
             </div>
           </div>
           <div className="block__end">

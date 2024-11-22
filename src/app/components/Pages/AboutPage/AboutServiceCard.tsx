@@ -78,7 +78,7 @@ export default function AboutServiceCard({ data }: { data: HomeServiceCardQueryT
             <h5 className="title">{cardTitle}</h5>
           </div>
           <div className="__image">
-            <Image src={cardImage.sourceUrl} alt={cardImage.altText} fill priority />
+            <Image src={cardImage?.sourceUrl || "" } alt={cardImage.altText} fill priority />
           </div>
           <div className="__content-wrapper">
             <div className="__content">

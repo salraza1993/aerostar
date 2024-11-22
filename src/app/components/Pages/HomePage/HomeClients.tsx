@@ -19,7 +19,7 @@ export default async function HomeClients() {
               {
                 logos.map((image: ClientLogoType, index:number) => (
                   <div key={index} className='client-logo-box'>
-                    <Image src={image?.sourceUrl} alt={image?.altText} fill priority />
+                    <Image src={image?.sourceUrl || ""} alt={image?.altText || ""} fill priority />
                   </div>
                 ))
               }

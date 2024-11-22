@@ -28,7 +28,7 @@ export default async function About1stSection() {
           </div>
           <div className="col-12 col-lg-6">
             <div className="about-section__image">
-              <Image src={data?.image?.node?.sourceUrl} alt={data?.image?.node?.altText} fill priority /> 
+              <Image src={data?.image?.node?.sourceUrl || ''} alt={data?.image?.node?.altText || ''} fill priority /> 
             </div>
           </div>
         </div>
