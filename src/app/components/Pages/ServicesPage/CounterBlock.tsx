@@ -23,7 +23,11 @@ export default async function CounterBlock() {
               <li key={index} className="counters-list__item">
                 <div className="__icon fs-2">
                   {/* <i className="fa-solid fa-pie-chart text-primary"></i> */}
-                  <Image src={counter?.icon?.node?.sourceUrl} alt={counter?.icon?.node?.altText} width={50} height={50} />
+                  <Image
+                    src={counter?.icon?.node?.sourceUrl || ""}
+                    alt={counter?.icon?.node?.altText || ""}
+                    width={50}
+                    height={50} />
                 </div>
                 <div className="counters-list__item__content">
                   <h2 className='__counter'>{counter.total}</h2>

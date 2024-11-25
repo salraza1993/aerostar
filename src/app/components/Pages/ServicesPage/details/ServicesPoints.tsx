@@ -13,7 +13,11 @@ export default function ServicesPoints({ data }: { data: SecondSectionDataType }
             data?.cardsData?.map((card: ServiceCardDataType, index: number) => {
               return <div className="services-points-card" key={index}>
                 <div className="services-points-card__icon">
-                  <Image src={card?.icon?.node?.sourceUrl || ''} alt={card?.icon?.node?.altText || ''} width={50} height={50} />
+                  <Image
+                    src={card?.icon?.node?.sourceUrl || ""}
+                    alt={card?.icon?.node?.altText || ""}
+                    width={50}
+                    height={50} />
                 </div>
                 <div className="services-points-card__content">
                   <h5 className="title">{card?.heading}</h5>

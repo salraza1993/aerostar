@@ -56,15 +56,21 @@
         gap: calc(var(--footer-padding-y) / 2);
         align-items: center;
         padding: calc(var(--footer-padding-y) / 2);
+        padding-block: calc(var(--footer-padding-y) / 3);
         background-color: rgba(var(--footer-color-rgb), 0.06);
         box-shadow: 0 0 0 1px rgba(var(--footer-color-rgb), 0.15);
         border-radius: calc(var(--border-radius) * 1.5);
         .title { color: var(--accent); margin: 0;}
-        a, span { font-weight: 500; font-size: calc(var(--font-size-small) * 1.15);}
+        a, span { 
+          font-weight: 500; 
+          font-size: calc(var(--font-size-small) * 1.15);
+          display: inline-block;
+        }
         &:is(.email) {
           white-space: nowrap;
         }
         &__icon {
+          flex-shrink: 0;
           position: relative;
           width: 45px;
           height: 45px;

@@ -4,6 +4,7 @@ import HomeAbout from './components/Pages/HomePage/HomeAbout';
 import HomeServices from './components/Pages/HomePage/HomeServices';
 import HomeMapsSection from './components/Pages/HomePage/HomeMapsSection';
 import HomeClients from './components/Pages/HomePage/HomeClients';
+import HomeBlogSection from './components/Pages/HomePage/HomeBlogSection';
 
 export default async function RootPage() {
   return (
@@ -12,6 +13,7 @@ export default async function RootPage() {
       <HomeAbout />
       <HomeServices />
       <HomeMapsSection />
+      <HomeBlogSection />
       <HomeClients />
     </>
   );

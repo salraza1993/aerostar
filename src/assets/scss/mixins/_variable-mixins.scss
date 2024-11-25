@@ -55,6 +55,7 @@
   --h_about-heading-color: var(--secondary);
   --title-color: var(--secondary);
   --contact-info-bg: rgba(var(--secondary-rgb), 0.07);
+  --map-bg: rgba(var(--secondary-rgb), 0.1);
 }
 
 @mixin darkColors() {
@@ -90,4 +91,5 @@
   --h_about-heading-color: var(--accent);
   --title-color: var(--accent);
   --contact-info-bg: rgba(var(--bs-black-rgb), 0.25);
+  --map-bg: #454545;
 }

@@ -10,7 +10,11 @@ export default function ServiceCounters({ data }: { data: ThirdSectionDataType[]
             data.map((counter:ThirdSectionDataType, index:number) => (
               <li key={index} className="service-counters__item">
                 <div className="__icon fs-2">
-                  <Image src={counter?.icon?.node?.sourceUrl || ""} alt={counter?.icon?.node?.altText || ""} width={50} height={50} />
+                  <Image
+                    src={counter?.icon?.node?.sourceUrl || ""}
+                    alt={counter?.icon?.node?.altText || ""}
+                    width={50}
+                    height={50} />
                 </div>
                 <div className="service-counters__item__content">
                   <h2 className='__counter'>{counter.counter}</h2>

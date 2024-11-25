@@ -1,5 +1,5 @@
 'use client'
-import { Pagination } from 'swiper/modules'
+import { Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css';
 import Button from '../../common/Button';
@@ -13,11 +13,12 @@ export default function HomeServiceCards({ data }: { data: HomeServiceCardQueryT
       <Swiper
         dir='ltr'
         freeMode={true}
-        spaceBetween={25}
+        spaceBetween={18}
+        navigation={true}
         pagination={{ type: "progressbar" }}
         grabCursor={true}
         slidesPerView={'auto'}
-        modules={[ Pagination]}
+        modules={[ Pagination, Navigation ]}
         className="home-service-cards-swiper"
       >
         {
@@ -32,7 +33,7 @@ export default function HomeServiceCards({ data }: { data: HomeServiceCardQueryT
               </div>
               <div className="card-body">
                 <div className="card-title">
-                  <h4 className='merriweather fw-700'>{cardTitle}</h4>
+                  <h6 className='merriweather fw-700'>{cardTitle}</h6>
                 </div>
                 <div className="card-content">
                   <div className="card-content-text-wrapper">

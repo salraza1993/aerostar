@@ -6,6 +6,7 @@
   --anchor-circle-bg: var(--accent);
   --anchor-circle-bg-rgb: var(--accent-rgb);
   --map-margin-height: calc(var(--map-height) / 2);
+  --map-svg-fill-bg: red;
   position: relative;
   padding-block: var(--block-padding);
 
@@ -29,9 +30,10 @@
     .home-maps {
       position: relative;
       width: 100%;
-      background-color: #e9e9f3;
+      background-color: var(--map-bg);
       padding: 1.5rem;
       z-index: 1;
+      border-radius: 0 0 calc(var(--border-radius) * 2) calc(var(--border-radius) * 2);
 
       .home-regional-map-container {
         --show-details: grid;
@@ -46,6 +48,7 @@
           height: 100%;
           object-fit: contain;
           object-position: center;
+          color: var(--map-svg-fill-bg);
     
           path {
             fill: rgba(var(--primary-100-rgb), 0.85);
@@ -54,7 +57,7 @@
           }
     
           g {
-            fill: rgba(var(--secondary-rgb), 0.5);
+            fill: var(--map-svg-fill-bg);
           }
         }
         .anchors {
@@ -304,7 +307,6 @@
 
 @keyframes bubble {
   0% { transform: scale(0.5); opacity: 1; }
-  // 70% { transform: scale(1.5); opacity: 0.5; }
   100% { transform: scale(3); opacity: 0; }
 }
 .custom-tooltip-container {

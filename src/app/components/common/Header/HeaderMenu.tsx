@@ -22,17 +22,8 @@ export default function HeaderMenu({  clickedHandle} : Props) {
   const [menus, setMenus] = useState<MenuInterface[]>([
     { label: 'Home', path: '/', isActive: false },
     { label: 'About', path: '/about', isActive: false },
-    {
-      label: 'Services',
-      path: '/services', isActive: false,
-      hasChildren: true,
-      children: [
-        { label: 'Service 1', path: '/services/service-1', isActive: false },
-        { label: 'Service 2', path: '/services/service-2', isActive: false },
-        { label: 'Service 3', path: '/services/service-3', isActive: false },
-      ],
-    },
-    // { label: 'News', path: '/blogs', isActive: false },
+    { label: 'Services', path: '/services', isActive: false },
+    { label: 'News', path: '/blogs', isActive: false },
     { label: 'Contact', path: '/contact', isActive: false },
   ]);
 
