@@ -23,7 +23,7 @@ export default function HeaderMenu({  clickedHandle} : Props) {
     { label: 'Home', path: '/', isActive: false },
     { label: 'About', path: '/about', isActive: false },
     { label: 'Services', path: '/services', isActive: false },
-    { label: 'News', path: '/blogs', isActive: false },
+    { label: 'Blog', path: '/blogs', isActive: false },
     { label: 'Contact', path: '/contact', isActive: false },
   ]);
 

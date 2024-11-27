@@ -12,7 +12,13 @@ export default async function FooterCTAsSection() {
         {
           footerCards?.map((data: FooterCardsTypes, index: number) => {
             return <div className={`ctas-box ${data.type}`} key={index}>
-              <div className="ctas-box__icon"><i className="fa-solid fa-phone"></i></div>
+              <div className="ctas-box__icon">
+                {
+                  data.type === 'phone' ? <i className="fa-solid fa-phone"></i> : 
+                    data.type === 'email' ? <i className="fa-solid fa-envelope"></i> :
+                      <i className="fa-solid fa-map-marker-alt"></i>
+                }
+              </div>
               <div className="ctas-box__content">
                 <p className='kanit fw-500 m-0 title'>{data.label}</p>
                 {

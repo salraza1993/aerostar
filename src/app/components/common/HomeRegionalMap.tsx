@@ -139,7 +139,7 @@ export default function HomeRegionalMap() {
                     ))}
                   </ul>
                   <hr />
-                  <Link href={"/"} className="link-view-details">View Details</Link>
+                  <Link href={"/contact"} className="link-view-details">View Details</Link>
                 </div>
             )
           }
