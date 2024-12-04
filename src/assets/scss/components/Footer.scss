@@ -51,11 +51,12 @@
         padding-block: 2px 10px;
       }
       .ctas-box {
-        flex: 1 0 250px;
+        flex: 1 0 auto;
+        min-width: 250px;
         display: flex;
         gap: calc(var(--footer-padding-y) / 2);
         align-items: center;
-        padding: calc(var(--footer-padding-y) / 2);
+        padding: calc(var(--footer-padding-y) / 2.5);
         padding-block: calc(var(--footer-padding-y) / 3);
         background-color: rgba(var(--footer-color-rgb), 0.06);
         box-shadow: 0 0 0 1px rgba(var(--footer-color-rgb), 0.15);

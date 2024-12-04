@@ -21,7 +21,7 @@ export default async function MissionVision() {
             return <div className='mission-vision-box' key={index}>
               <div className="mission-vision-box__header">
                 <div className="__icon">
-                  <Image src={card?.icon?.node?.sourceUrl || ""} alt={card.icon.node.altText} width={100} height={100} />
+                  <Image src={card?.icon?.node?.sourceUrl || ""} alt={card.icon.node.altText || ""} width={100} height={100} />
                 </div>
                 <div className="title">
                   <h2 className="fw-700 text-secondary">{card.title}</h2>

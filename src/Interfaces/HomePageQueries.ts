@@ -88,6 +88,22 @@ export const GET_SLIDERS_CONTENT = `
     }
   }
 `;
+export const GET_HOME_VIDEO = `
+  query HomeAboutContentQuery {
+    pages(where: {id: ${pageId}}) {
+      edges {
+        node {
+          homePage {
+            video {
+              videoUrl
+              title
+            }
+          }
+        }
+      }
+    }
+  }
+`;
 
 export const GET_REGIONAL_MAP_CONTENT = `
   query HomeRegionalContentQuery {

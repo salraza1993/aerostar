@@ -13,7 +13,7 @@ type Props = {
 function ImageTag({ src, alt, width, height, sizes, style, priority, fill }: Props) {
   const defaultStyles = { width: width || "100%", height: height || "100%" };
   return <Image
-    src={src}
+    src={src || ""}
     alt={alt || ""}
     width={(width = 0)}
     height={(height = 0)}

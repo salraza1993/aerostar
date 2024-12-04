@@ -58,6 +58,14 @@ export type HomeBlogTitleQueryData = {
     }
   }
 }
+export type HomeVideoQueryData = {
+  homePage: {
+    video: {
+      videoUrl: string,
+      title: string
+    }
+  }
+}
 export type HomeSlidersQueryData<TNode = unknown> = {
   sliders: {
     nodes: TNode[]

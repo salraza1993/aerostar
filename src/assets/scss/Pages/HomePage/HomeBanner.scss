@@ -82,3 +82,36 @@
     }
   }
 }
+
+.home-video-section {
+  --video-height: 16 / 9;
+  position: relative;
+  width: 100%;
+  height: calc(var(--video-height) - var(--header-height));
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+
+  video {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    margin-block-start: calc(0px - var(--header-height) * 2);
+  }
+  .video-content {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(var(--bs-black-rgb), 0.25);
+    color: var(--bs-white);
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--font-size-1);
+    font-family: var(--merriweather-font);
+    font-weight: 700;
+    padding: var(--mobile-padding);
+    text-align: center;
+  }
+}

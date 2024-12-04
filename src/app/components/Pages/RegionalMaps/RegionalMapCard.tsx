@@ -8,22 +8,26 @@ export default function RegionalMapCard() {
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut laboriosam molestias non aliquam architecto dignissimos ea rerum quidem? Similique aspernatur unde id doloribus dolorem voluptates consectetur neque dolores voluptatibus dolorum.
         </p>
-        <p className="fw-bold text-uppercase">Filter by services</p>
+        <p className="fw-bold text-uppercase text-secondary">Filter by services</p>
         <ul className="filters">
-          <li className="filters__list">
+          <li className="filters__list custom-tooltip-container">
+            <span className="custom-tooltip">Hello</span>
             <i className="fa-solid fa-family"></i>
           </li>
-          <li className="filters__list">
+          <li className="filters__list custom-tooltip-container">
+            <span className="custom-tooltip">Hello</span>
             <i className="fa-solid fa-family"></i>
           </li>
-          <li className="filters__list">
+          <li className="filters__list custom-tooltip-container">
+            <span className="custom-tooltip">Hello</span>
             <i className="fa-solid fa-family"></i>
           </li>
-          <li className="filters__list">
+          <li className="filters__list custom-tooltip-container">
+            <span className="custom-tooltip">Hello</span>
             <i className="fa-solid fa-family"></i>
           </li>
         </ul>
-        <Link href={'/'} className="btn btn-outline-dark">
+        <Link href={'/regional-maps/details'} className="btn btn-outline-dark">
           <span>View Details</span>
           <i className="fa-solid fa-arrow-right"></i>
         </Link>

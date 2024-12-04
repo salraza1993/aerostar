@@ -40,8 +40,27 @@
         }
         &__start {
           padding: calc(var(--block-padding) / 2);
+          .filters {
+            position: relative;
+            display: flex;
+            list-style: none;
+            margin: 0;
+            margin-block-end: 1rem;
+            padding: 0;
+            gap: 0.5rem;
+            &__list {
+              position: relative;
+              width: 45px;
+              height: 45px;
+              background-color: rgba(var(--secondary-rgb), 0.1);
+              border-radius: calc(var(--border-radius) / 1.5);
+              color: var(--secondary);
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+          }
         }
-
       }
     }
   }

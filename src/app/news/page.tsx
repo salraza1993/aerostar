@@ -9,7 +9,6 @@ import { graphqlRequest } from '@/lib/graphqlRequest';
 export default async function BlogPage() {
   const response = await graphqlRequest<GetBlogPagePostDataTypes>(GET_BLOG_PAGE_POSTS);
   const blogCardData = response?.posts?.edges;
-  console.log('blogContent: ', blogCardData)
 
   return <>    
     <SubPageHeroBanner pageId={43} />

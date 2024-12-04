@@ -273,3 +273,47 @@ small {
     }
   }
 }
+
+.custom-tooltip-container {
+  position: relative;
+  --c-tooltip-y-end: 0;
+  --c-tooltip-visibility: hidden;
+  --c-tooltip-opacity: 0;
+  --pointer-width: 6px;
+  --c-tooltip-bg: rgb(var(--body-color-rgb), 0.85);
+  --c-tooltip-color: var(--body-bg);
+
+  .custom-tooltip {
+    position: absolute;
+    text-transform: capitalize;
+    font-size: 0.95rem;
+    line-height: 1.15rem;
+    padding-inline: 0.6rem;
+    padding-block: 0.25rem 0.35rem;
+    inset-block-end: calc(var(--c-tooltip-y-end) + var(--pointer-width));
+    background-color: var(--c-tooltip-bg);
+    color: var(--c-tooltip-color);
+    backdrop-filter: blur(3px);
+    border-radius: calc(var(--border-radius) / 1.25);
+    visibility: var(--c-tooltip-visibility);
+    opacity: var(--c-tooltip-opacity);
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset-block-start: 100%;
+      inset-inline-start: 50%;
+      transform: translateX(-50%);
+      border-inline-start: var(--pointer-width) solid transparent;
+      border-inline-end: var(--pointer-width) solid transparent;
+      border-block-start: var(--pointer-width) solid var(--c-tooltip-bg);
+    }
+  }
+
+  &:hover,
+  &:focus-within {
+    --c-tooltip-y-end: 100%;
+    --c-tooltip-visibility: visible;
+    --c-tooltip-opacity: 1;
+  }
+}
