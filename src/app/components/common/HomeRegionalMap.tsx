@@ -78,7 +78,8 @@ export default function HomeRegionalMap({ data }: { data: AnchorDataTypes[] }) {
   useEffect(() => {
     const updatedAnchors = anchors.map((item) => ({...item, selected: false}));
     setAnchors(updatedAnchors);
-  }, [anchors]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return <div className="home-regional-map-container">
       <EgyptMapStroke />
