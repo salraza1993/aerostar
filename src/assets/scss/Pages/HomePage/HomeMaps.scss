@@ -345,6 +345,8 @@
         display: grid;
         grid-template-columns: repeat(var(--grid-columns), 1fr);
         gap: var(--block-padding);
+        padding-inline: calc(var(--block-padding) / 2);
+        text-wrap: balance;
 
         @media (width <=#{$small}) {
           width: 100vw;

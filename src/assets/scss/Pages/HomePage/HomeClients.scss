@@ -7,24 +7,16 @@
   background-color: var(--primary-100);
   
   .home-clients-content {
+    --logo-size: 80px;
     position: relative;
     width: 100%;
     .client-logo-box {
       position: relative;
-      width: 200px;
-      height: 80px;
+      width: calc(var(--logo-size) * 2.65);
+      height: var(--logo-size);
+      overflow: clip;
+      border-radius: calc(var(--border-radius) * 1.5);
       @include objectFit($fit: contain);
-      img {
-        filter: grayscale(1);
-        mix-blend-mode: multiply;
-        transition: var(--transition);
-      }
-      &:hover {
-        img {
-          filter: none;
-          scale: 1.15;
-        }
-      }
     }
     .clients-logo-swiper, .clients-logo {
       --swiper-pagination-top: calc(100% - 10px);
@@ -41,6 +33,8 @@
     .clients-logo {
       display: flex;
       justify-content: center;
+      gap: 1rem;
+      padding-block-end: calc(var(--block-padding-y) / 2);
     }
   }
 }

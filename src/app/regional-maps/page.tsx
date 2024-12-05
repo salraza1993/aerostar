@@ -7,7 +7,6 @@ import { GET_ALL_AIRPORTS, GetAllAirportsQueryData, GetAllAirportsQueryNodes } f
 export default async function page() {
   const airports = await graphqlRequest<GetAllAirportsQueryData>(GET_ALL_AIRPORTS);
   const airportsData = airports?.airport?.edges;
-  console.log('airportsData: ', airportsData)
   return <>
     <SubPageHeroBanner pageId={47} />
     <section className="regional-map-section">
@@ -18,11 +17,6 @@ export default async function page() {
               return <RegionalMapCard key={index} data={card} />
             })
           }
-          {/* <RegionalMapCard />
-          <RegionalMapCard />
-          <RegionalMapCard />
-          <RegionalMapCard />
-          <RegionalMapCard /> */}
         </div>
       </div>
     </section>

@@ -7,10 +7,12 @@ export default async function HomeVideo() {
   const response = await graphqlRequest<PageData<HomeVideoQueryData>>(GET_HOME_VIDEO);
   const videoData = response?.pages?.edges[0]?.node?.homePage?.video;
   return <section className="home-video-section">
-    <video loop autoPlay muted>
-      <source src={videoData.videoUrl} type="video/mp4" />
-      <span>Your browser does not support the video tag.</span>
-    </video>
+    <div className="video-wrapper">
+      <video loop autoPlay muted>
+        <source src={videoData.videoUrl} type="video/mp4" />
+        <span>Your browser does not support the video tag.</span>
+      </video>
+    </div>
     <div className="video-content">{ videoData.title }</div>
   </section>
 }
