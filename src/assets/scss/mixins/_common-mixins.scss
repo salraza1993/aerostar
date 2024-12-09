@@ -116,3 +116,18 @@
   $color_opacity: 0.25) {
   #{$direction}: #{$width}px $style rgba(var(#{$rgb_color}), $color_opacity);
 }
+@mixin NextImgReset(
+  $position: inherit,
+  $left: initial,
+  $top: initial,
+  $right: initial,
+  $bottom: initial,
+) {
+  svg, img {
+    position: $position !important;
+    left: $left !important;
+    top: $top !important;
+    right: $right !important;
+    bottom: $bottom !important;
+  }
+}
