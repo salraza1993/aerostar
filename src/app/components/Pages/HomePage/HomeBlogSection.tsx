@@ -23,7 +23,7 @@ export default async function HomeBlogSection() {
         <div className="home-blog-lists">
           <div className="row g-3">
             {
-              blogCardData.map((card, index) => (
+              blogCardData.splice(0, 3).map((card, index) => (
                 <div key={index} className="col-12 col-md-12 col-lg-4">
                   <BlogCard cardClassName={"homeBlogCard"} data={card} />
                 </div>

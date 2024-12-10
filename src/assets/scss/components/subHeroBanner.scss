@@ -2,9 +2,10 @@
 .hero-banner-section {
   --banner-height: 200px;
   --block-content-color: var(--bs-white);
+  --block-padding: calc(0.5rem + 0.5vw);
   position: relative;
   width: 100%;
-  padding: calc(0.5rem + 0.5vw);
+  padding: var(--block-padding);
   padding-inline: var(--fluid-container-padding);
   color: var(--block-content-color);
   @media (width <= #{$medium}) {

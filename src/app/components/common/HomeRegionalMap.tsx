@@ -25,18 +25,18 @@ export default function HomeRegionalMap({ data }: { data: AnchorDataTypes[] }) {
   const [anchors, setAnchors] = useState<AnchorDataTypes[]>(data);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [anchorCoordinates, setAnchorCoordinates] = useState<AnchorCoordinates[]>([
-    { y: 8, x: 8 },
-    { y: 30, x: 55 },
-    { y: 65, x: 33 },
-    { y: 81, x: 78 },
-    { y: 58, x: 62 },
-    { y: 7, x: 75 },
-    { y: 30, x: 75 },
-    { y: 25, x: 15 },
-    { y: 8, x: 40 },
-    { y: 10, x: 62 },
-    { y: 33, x: 43 },
-    { y: 3, x: 50 },
+    { x: 52, y: 13 },
+    { x: 47, y: 12 },
+    { x: 41, y: 5 },
+    { x: 70, y: 42 },
+    { x: 76, y: 36 },
+    { x: 65, y: 65 },
+    { x: 65, y: 80 },
+    { x: 78, y: 58 },
+    { x: 56, y: 50 },
+    { x: 48.5, y: 40 },
+    { x: 12, y: 1 },
+    { x: 29, y: 7 },
   ]);
   const elementStyles = (x: number, y: number): CustomCSSProperties => {
     return {
@@ -93,14 +93,16 @@ export default function HomeRegionalMap({ data }: { data: AnchorDataTypes[] }) {
             onMouseEnter={() => anchorHandler(anchor)}
             onClick={() => anchorHandler(anchor)}
           >
-            <span className="pointer"></span>
+            <span className="pointer">
+              {/* <small>{ anchor.node.title }</small> */}
+            </span>
             {
               anchor.selected && (
                 <div className="anchor-details">
-                  {/* <span className="close-button" onClick={() => removeActiveAnchorsHandler(anchor)}>
-                    <i className="fa-solid fa-xmark"></i>
-                  </span> */}
-                  <p className="_title">{anchor.node.title}</p>
+                  <p className="_title">
+                    {anchor.node.title} &nbsp; &nbsp;
+                    <span>x: {anchorCoordinates[index].x}, y: {anchorCoordinates[index].y}</span>
+                  </p>
                   <div dangerouslySetInnerHTML={{ __html: anchor.node.excerpt }}></div>
                   {/* <hr />
                   <p className="fw-bold">Filter by services</p>

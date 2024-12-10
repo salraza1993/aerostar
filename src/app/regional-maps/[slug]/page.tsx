@@ -13,16 +13,16 @@ export default async function page({ params }: { params: Params }) {
   
   return (
     <>
-      <section className="hero-banner-section">
-        <div className="hero-banner-content">
-          <div className="hero-banner-image">
-            <Image
-              src={data?.featuredImage?.node?.sourceUrl || ""}
-              alt={data?.featuredImage?.node?.altText || "Banner Image"}
-              fill
-              priority />        
-          </div>
-          <div className="container">
+      <section className="regional-map-banner">
+        <div className="container">
+          <div className="regional-map-banner__content">
+            <div className="hero-banner-image">
+              <Image
+                src={data?.featuredImage?.node?.sourceUrl || ""}
+                alt={data?.featuredImage?.node?.altText || "Banner Image"}
+                fill
+                priority />        
+            </div>
             <h2 className="merriweather m-0 fw-700">{ data?.title || 'Page Title' }</h2>
           </div>
         </div>

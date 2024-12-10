@@ -77,6 +77,10 @@
             width: var(--anchor-size);
             height: var(--anchor-size);
             cursor: pointer;
+            small {
+              white-space: nowrap;
+              display: block;
+            }
             .pointer {
               width: 100%;
               height: 100%;

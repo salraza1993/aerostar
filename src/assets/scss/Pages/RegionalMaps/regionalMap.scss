@@ -1,6 +1,7 @@
 @import './../../mixins/common-mixins';
 :root {
   --block-padding: calc(1rem + 1vw);
+  --content-width: 1200px;
 }
 .regional-map-section {
   position: relative;
@@ -85,7 +86,7 @@
   }
   &-content { 
     padding-block: var(--block-padding);
-    max-width: 950px;
+    max-width: var(--content-width);
     margin-inline: auto;
 
     .__map {
@@ -100,6 +101,26 @@
         width: 100%;
         height: 100%;
       }
+    }
+  }
+}
+
+.regional-map-banner {
+  position: relative;
+  width: 100%;
+  padding-block-start: calc(var(--block-padding) / 2);
+  &__content {
+    width: 100%;
+    max-width: var(--content-width);
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--block-padding) * 1);
+    .hero-banner-image {
+      position: relative;
+      border-radius: calc(var(--border-radius) * 2);
+      @include objectFit();
+      @include NextImgReset();
     }
   }
 }
