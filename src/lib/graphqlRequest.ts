@@ -4,10 +4,9 @@ export async function graphqlRequest<TData, TVariables = unknown>(
 ): Promise<TData> {
   const response = await fetch(process.env.WORDPRESS_GRAPHQL_ENDPOINT as string, {
     method: "POST",
-    cache: 'no-store',
     headers: {
       "Content-Type": "application/json",
-      "Cache-Control": "no-cache",
+      "Cache-Control": "no-store, no-cache, must-revalidate",
     },
     body: JSON.stringify({ query, variables }),
   });
