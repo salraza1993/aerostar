@@ -6,7 +6,6 @@ export async function graphqlRequest<TData, TVariables = unknown>(
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Cache-Control": "no-store, no-cache, must-revalidate",
     },
     body: JSON.stringify({ query, variables }),
   });
