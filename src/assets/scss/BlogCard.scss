@@ -19,6 +19,8 @@
     position: relative;
     overflow: clip;
     border-radius: calc(var(--border-radius) * 2);
+    @include objectFit();
+    @include NextImgReset();
 
     .blog-info {
       position: absolute;

@@ -202,6 +202,17 @@
         }
       }
     }
+    .error-message {
+      position: absolute;
+      inset-block-start: 100%;
+      inset-inline-start: 0;
+      background-color: var(--bs-danger);
+      color: var(--bs-white);
+      width: max-content;
+      padding-inline: 0.5rem;
+      padding-block: 0.25rem;
+      border-radius: var(--border-radius);
+    }
   }
   .social-media-group {
     .social-media {

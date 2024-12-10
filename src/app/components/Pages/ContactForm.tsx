@@ -1,7 +1,8 @@
 "use client";
+import { HomeServiceCardQueryTypes } from "@/Interfaces/HomePageQueryTypes";
 import { useState, ChangeEvent, FormEvent } from "react";
 
-interface FormData {
+interface FormDataInterface {
   name: string;
   email: string;
   phone: string;
@@ -9,7 +10,7 @@ interface FormData {
   message: string;
 }
 
-interface FormErrors {
+interface FormErrorsInterface {
   name?: string;
   email?: string;
   phone?: string;
@@ -17,22 +18,23 @@ interface FormErrors {
   message?: string;
 }
 
-export default function ContactForm() {
+export default function ContactForm({ data }: { data: HomeServiceCardQueryTypes[] }) {
   const formFields = {
-    name: '',
-    email: '',
-    phone: '',
-    subject: '',
-    message: ''
+    name:"",
+    email:"",
+    phone:"",
+    subject:"",
+    message:"",
   }
-  const [formData, setFormData] = useState<FormData>(formFields);
+  const [formData, setFormData] = useState<FormDataInterface>(formFields);
 
-  const [errors, setErrors] = useState<FormErrors>({});
-  const [touchedFields, setTouchedFields] = useState<Partial<Record<keyof FormData, boolean>>>({});
+  const [errors, setErrors] = useState<FormErrorsInterface>({});
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [touchedFields, setTouchedFields] = useState<Partial<Record<keyof FormDataInterface, boolean>>>({});
 
   // Modified validateField to return field-specific errors
-  const validateField = (field: keyof FormData, value: string): FormErrors => {
-    const fieldErrors: FormErrors = {};
+  const validateField = (field: keyof FormDataInterface, value: string): FormErrorsInterface => {
+    const fieldErrors: FormErrorsInterface = {};
 
     switch (field) {
       case 'name':
@@ -68,52 +70,53 @@ export default function ContactForm() {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formErrors = validateForm();
+
     if (Object.keys(formErrors).length === 0) {
       // Form is valid
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        subject: '',
-        message: ''
-      });
+      submitDataToServer(formData);
+      setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
       setErrors({});
-      setTouchedFields({});
     } else {
-      setErrors(formErrors); // Set all form errors
+      setErrors(formErrors);
     }
   };
+  
+  const submitDataToServer = (_data: FormDataInterface) => {
+    const formDataForWP: FormData = new FormData();
+    Object.entries(_data).forEach(([key, value]) => {
+      formDataForWP.append(`your-${key}`, value);
+    });
+    formDataForWP.append("_wpcf7_unit_tag", "wpcf7-f180-p2-o1");
+
+    fetch(`${process.env.NEXT_PUBLIC_WORDPRESS_WP_JSON_URL}/contact-form-7/v1/contact-forms/${process.env.NEXT_PUBLIC_CONTACT_FORM_ID}/feedback`, {
+      headers: {
+        Accept: "application/json",
+      },
+      method: "POST",
+      body: formDataForWP,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status === 'mail_sent') {
+          console.log('Form submitted successfully:', data);
+        } else {
+          console.error('Error submitting form:', data);
+        }
+      })
+      .catch((error) => {
+        console.error('Request failed:', error);
+      });
+  }
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value
-    });
+    setFormData({...formData, [name]: value});
   };
 
-  // const handleBlur = (e: FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-  //   const { name, value } = e.target;
-  //   // Mark the field as touched
-  //   setTouchedFields((prev) => ({
-  //     ...prev,
-  //     [name]: true,
-  //   }));
-
-  //   // Validate the field on blur and get the error if any
-  //   const fieldError = validateField(name as keyof FormData, value);
-
-  //   // Update the errors state
-  //   setErrors((prevErrors) => ({
-  //     ...prevErrors,
-  //     ...fieldError
-  //   }));
-  // };
-
   // Validate the entire form
-  const validateForm = (): FormErrors => {
-    const fields = ['name', 'email', 'phone', 'subject', 'message'] as Array<keyof FormData>;
-    const formErrors: FormErrors = {};
+  const validateForm = (): FormErrorsInterface => {
+    const fields = ['name', 'email', 'phone', 'subject', 'message'] as Array<keyof FormDataInterface>;
+    const formErrors: FormErrorsInterface = {};
 
     fields.forEach((field) => {
       Object.assign(formErrors, validateField(field, formData[field]));
@@ -122,7 +125,7 @@ export default function ContactForm() {
     return formErrors;
   };
 
-  const getInputClass = (field: keyof FormData) => {
+  const getInputClass = (field: keyof FormDataInterface) => {
     if (errors[field]) {
       return "form-control is-invalid";
     }
@@ -196,10 +199,14 @@ export default function ContactForm() {
             onChange={handleChange}
             onBlur={handleChange}
           >
-            <option value="">Select Subject</option>
-            <option value="inquiry">Inquiry</option>
-            <option value="support">Support</option>
-            <option value="feedback">Feedback</option>
+            <option value="">-- Select --</option>
+            {
+              data.map((service:HomeServiceCardQueryTypes, index: number) => (
+                <option key={index} value={service?.node?.title}>
+                  {service?.node?.title}
+                </option>
+              )) || []
+            }
           </select>
           {errors.subject && <small className="text-danger">{errors.subject}</small>}
         </div>

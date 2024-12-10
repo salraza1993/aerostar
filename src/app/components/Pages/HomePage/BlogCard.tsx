@@ -10,7 +10,7 @@ export default function BlogCard({ data, cardClassName } : {data: BlogCardDataTy
       <ul className="blog-info">
         <li>
           <i className="fa-solid fa-calendar-alt"></i>
-          <span>{data.node?.date}</span>
+          <span>{dateFormat(data.node?.date)}</span>
         </li>
       </ul>
     </div>
@@ -22,4 +22,11 @@ export default function BlogCard({ data, cardClassName } : {data: BlogCardDataTy
       {/* <Button type='link' path={path} label='Read More' color='gray' icon='angle-right' iconPosition='after' /> */}
     </div>
   </div>
+}
+const dateFormat = (date: string): string => {
+  return new Date(date).toLocaleDateString(undefined, {
+    year: "numeric",
+    month: "short", // Use "short" or "numeric" for shorter formats
+    day: "2-digit",
+  });
 }
