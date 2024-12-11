@@ -8,11 +8,13 @@ export async function graphqlRequest<TData, TVariables = unknown>(
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ query, variables }),
+    cache: "no-store",
   });
 
   const json = await response.json();
   
   if (json.errors) {
+    console.error("GraphQL Errors:", json.errors);
     throw new Error(json.errors[0].message);
   }
   
