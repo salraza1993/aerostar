@@ -31,7 +31,7 @@
         &__end {
           flex-shrink: 0;
           width: 40%;
-          background-color: blue;
+          background-color: var(--border-color);
           display: flex;
           @media screen and (max-width: 768px) {
             width: 100%;
