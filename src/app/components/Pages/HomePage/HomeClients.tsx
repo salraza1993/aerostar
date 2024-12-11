@@ -12,6 +12,9 @@ export default async function HomeClients() {
   return (
     <section className='home-clients-section'>
       <div className="container">
+        <div className="section-header mb-3">
+          <h2 className='merriweather fw-700 fs-1 title text-secondary'>Our Partners</h2>
+        </div>
         {
           logos.length > 7 ? <ClientsCarousel data={logos} /> :
           <div className="home-clients-content">

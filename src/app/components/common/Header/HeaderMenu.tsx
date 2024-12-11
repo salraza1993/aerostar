@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useSelectedLayoutSegment } from "next/navigation";
 import { useState, useEffect } from "react";
+import EliteLogo from "../../elements/EliteLogo";
 
 interface MenuInterface {
   label: string;
@@ -23,7 +24,7 @@ export default function HeaderMenu({  clickedHandle} : Props) {
     { label: 'Home', path: '/', isActive: false },
     { label: 'About', path: '/about', isActive: false },
     { label: 'Services', path: '/services', isActive: false },
-    { label: 'Elite Jets', path: '/elite-jets', isActive: false },
+    // { label: 'Elite Jets', path: '/elite-jets', isActive: false },
     { label: 'News', path: '/news', isActive: false },
     { label: 'Contact', path: '/contact', isActive: false },
   ]);
@@ -64,5 +65,10 @@ export default function HeaderMenu({  clickedHandle} : Props) {
         </li>
       ))
     }
+    <li className="menu__list elite-button-menu">
+      <Link href={'/elite-jets'} className="elite-button">
+        <EliteLogo />
+      </Link>
+    </li>
   </ul>
 }

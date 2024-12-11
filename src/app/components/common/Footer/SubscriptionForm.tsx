@@ -1,19 +1,19 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 export default function SubscriptionForm() {
   const [email, setEmail] = useState<string>('');
   const [error, setError] = useState<boolean>(false);
-  // const [success, setSuccess] = useState<boolean>(false);
+  const [successErrorMessage, setSuccessErrorMessage] = useState<string>('');
+  const [success, setSuccess] = useState<boolean>(false);
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => { 
     event.preventDefault();
     if (email === undefined || email === '') {
       setError(true);
+      setSuccessErrorMessage("Enter your email ID.");
     } else {
-      setError(false);
       submitDataToServer(email)
-      setEmail('');
     }
   }
   const submitDataToServer = (_data: string) => {
@@ -30,24 +30,41 @@ export default function SubscriptionForm() {
       .then((res) => res.json())
       .then((data) => {
         if (data.status === 'mail_sent') {
-          console.log('Form submitted successfully:', data);
+          setSuccess(true)
+          setSuccessErrorMessage("Thank you for subscribing!");
+          setTimeout(() => {
+            setSuccess(false)
+            setEmail('');
+          }, 2000)
         } else {
-          console.error('Error submitting form:', data);
+          setError(true)
+          setSuccessErrorMessage("Error submitting form. Try again later!");
+          setTimeout(() => {
+            setError(false);
+            setEmail('');
+          }, 2000)
         }
       })
       .catch((error) => {
         console.error('Request failed:', error);
       });
   }
+  useEffect(() => {
+    setTimeout(() => { 
+      setError(false)
+      setSuccess(false)
+    }, 2000)
+  }, [error, success])
   return <form className="newsletter-input-group" onSubmit={handleSubmit}>
     <span className="icon icon__before"> <i className="fa-solid fa-envelope"></i></span>
     <input
-      className='newsletter-input'
+      className={`newsletter-input form-control ${error ? 'is-invalid' : ''}`}
       type="email"
       value={email}
       onChange={(e) => setEmail(e.target.value)}
       placeholder='Enter your email ID' />
     <button type="submit" className="icon submit-button"> <i className="fa-solid fa-paper-plane"></i></button>
-    {error && <small className="error-message">Enter your email ID.</small>}
+    {error && <small className="alert alert-danger error-message">{ successErrorMessage }</small>}
+    {success && <small className="alert alert-success success-message">{ successErrorMessage }</small>}
   </form>
 }

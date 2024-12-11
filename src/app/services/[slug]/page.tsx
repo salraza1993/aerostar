@@ -6,13 +6,18 @@ import HomeClients from '@/app/components/Pages/HomePage/HomeClients';
 import ContactForm from '@/app/components/Pages/ContactForm';
 import { graphqlRequest } from '@/lib/graphqlRequest';
 import { FirstSectionDataType, GET_PAGE_CONTENT, SecondSectionDataType, ServicesDetailDataType } from '@/Interfaces/ServicePageQueries';
+import { HomeServiceCardQueryData } from '@/Interfaces/HomePageQueryTypes';
+import { GET_HOME_SERVICE_CARDS } from '@/Interfaces/HomePageQueries';
 
 type Params = { slug: string }
 export default async function ServiceDetails({ params }: { params: Params }) {
   const pageSlug: string = params.slug;
   const response = await graphqlRequest<ServicesDetailDataType>(GET_PAGE_CONTENT, { name: pageSlug });
   const firstSectionData : FirstSectionDataType = response?.services?.edges[0]?.node?.serviceDetails?.firstSection;
-  const secondSectionData : SecondSectionDataType = response?.services?.edges[0]?.node?.serviceDetails?.secondSection;
+  const secondSectionData: SecondSectionDataType = response?.services?.edges[0]?.node?.serviceDetails?.secondSection;
+  
+  const serviceCards = await graphqlRequest<HomeServiceCardQueryData>(GET_HOME_SERVICE_CARDS);
+  const servicesList = serviceCards?.services?.edges;
 
   return <>
     <SubPageHeroBanner pageId={114} />
@@ -26,7 +31,7 @@ export default async function ServiceDetails({ params }: { params: Params }) {
             <h2 className='merriweather text-secondary fw-700 text-balance title'>Any Question? <br /> <strong>Feel Free to Contact</strong></h2>
             <p className='text-balance'>With a vast array of popular private planes to choose from, travelling by private jet charter is the most efficient</p>
             <div className="form-block">
-              <ContactForm />
+              <ContactForm data={servicesList} />
             </div>
           </div>
         </div>
