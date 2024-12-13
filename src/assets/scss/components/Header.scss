@@ -27,7 +27,7 @@
   --header-logo-height: calc(var(--header-height) - 15px);
   --gaps: calc(1.5rem + 1vw);
   --button-size-minus: 52px;
-  --button-size: calc(var(--header-height) - var(--button-size-minus));
+  --button-size: 45px;
   --list-bg: var(--body-bg);
   --list-color: var(--body-color);
   --list-hover-bg: var(--secondary);
@@ -42,6 +42,7 @@
   z-index: var(--max-z-index);
   isolation: isolate;
   scroll-margin-top: var(--header-height);
+
   .nav-container-blur {
     position: absolute;
     inset: 0;
@@ -49,14 +50,20 @@
     backdrop-filter: blur(12px);
     z-index: -1;
   }
-  
-  ul { margin: 0; padding: 0; list-style: none; }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
   @media (width < #{$medium}) {
     .container {
       --container-width: 100%;
     }
   }
-  
+
+
   .main-sub-header {
     height: var(--header-height);
     display: flex;
@@ -64,21 +71,26 @@
     justify-content: space-between;
 
     .block {
-      &__start, &__end {
+
+      &__start,
+      &__end {
         display: flex;
         align-items: center;
         gap: calc(var(--gaps) / 2);
         height: 100%;
       }
+
       &__start {
         @media (width > #{medium}) {
           width: 80%;
         }
       }
     }
+
     .header-logo {
       position: relative;
       flex-shrink: 0;
+
       picture {
         display: block;
         height: var(--header-logo-height);
@@ -86,11 +98,17 @@
       }
     }
   }
+
   .navigation {
     position: relative;
     margin-inline-start: calc(var(--gaps) / 2);
-    @media (width < #{$medium}) { display: none !important; }
+
+    @media (width < #{$medium}) {
+      display: none !important;
+    }
+
     width: 100%;
+
     .menu {
       --menu-link-color: inherit;
       position: relative;
@@ -101,6 +119,7 @@
       font-size: 1.1rem;
       width: 100%;
       max-width: calc(65% + 5vw);
+
       &__list {
         position: relative;
         height: var(--header-height);
@@ -111,26 +130,31 @@
 
         &.elite-button-menu {
           align-self: center;
+
           .elite-button {
             display: flex;
             width: 80px;
             @include objectFit($fit: contain);
             color: var(--accent);
             transition: var(--transition);
-        
+
             &:hover {
               color: var(--secondary);
             }
           }
         }
+
         &__link {
           position: relative;
           display: inline-block;
           color: var(--menu-link-color);
         }
-        &:not(.active):hover, &:is(.active) {
+
+        &:not(.active):hover,
+        &:is(.active) {
           --menu-link-color: var(--accent-bg);
         }
+
         &::after {
           content: '';
           position: absolute;
@@ -141,11 +165,13 @@
           inset-inline-end: 0;
           transition: var(--transition);
         }
+
         &:is(.active):after {
           width: 100%;
           inset-inline-start: 0;
         }
       }
+
       .sub-menu {
         position: absolute;
         inset-block-start: 0;
@@ -153,11 +179,15 @@
       }
     }
   }
+
   .navigation-mobile-view {
     --mobile-padding: 5vw;
     position: relative;
     @include headerSquareElement();
-    @media (width >= #{$medium}) { display: none !important; }
+
+    @media (width >=#{$medium}) {
+      display: none !important;
+    }
 
     .mobile-menu-container {
       position: fixed;
@@ -184,26 +214,34 @@
         border: 1px solid var(--bs-danger);
         transition: var(--transition);
         margin-inline-start: auto;
+
         &:hover {
           color: var(--bs-white);
           background-color: var(--bs-danger);
         }
       }
+
       .menu {
         position: relative;
         width: 100%;
         display: flex;
         flex-direction: column;
         gap: calc(var(--gaps) / 3);
-        .sub-menu { display: none; }
+
+        .sub-menu {
+          display: none;
+        }
+
         &__list {
           position: relative;
+
           &.elite-button-menu {
             align-self: center;
             width: 100%;
             background-color: rgba(var(--primary-100-rgb), 0.1);
             border-radius: var(--border-radius);
             padding: 0.9rem;
+
             .elite-button {
               display: flex;
               @include objectFit($fit: contain);
@@ -211,12 +249,13 @@
               transition: var(--transition);
               width: 100%;
               height: 50px;
-        
+
               &:hover {
                 color: var(--secondary);
               }
             }
           }
+
           &__link {
             position: relative;
             display: flex;
@@ -228,13 +267,17 @@
             border: 0;
             line-height: calc(var(--font-size-5) * 1);
             overflow: clip;
-            &:not(.active):hover, &:is(.active) {
+
+            &:not(.active):hover,
+            &:is(.active) {
               background-color: var(--accent-bg);
               color: var(--accent-color);
             }
+
             &:is(.active) {
               padding-inline-start: 1.5rem;
               font-weight: 700;
+
               &::after {
                 content: '\f621';
                 position: absolute;
@@ -246,6 +289,7 @@
                 height: 25px;
                 text-align: center;
               }
+
               &::before {
                 content: '';
                 position: absolute;
@@ -263,19 +307,21 @@
       }
     }
   }
-  
+
   .theme-n-lang {
     position: relative;
     display: flex;
     gap: calc(var(--gaps) / 4);
+
     &__list {
       position: relative;
       @include headerSquareElement();
     }
+
     .theme-n-lang__menu {
       position: absolute;
       white-space: nowrap;
-      inset-block-start: calc(100% + (var(--button-size-minus) / 2) + 1px);
+      inset-block-start: calc(100% + (var(--button-size-minus) / 2) + 2px);
       left: 50%;
       transform: translateX(-50%);
       overflow: clip;
@@ -287,9 +333,12 @@
       gap: 0.1rem;
       background-color: rgba(var(--body-bg-rgb), 0.7);
       backdrop-filter: blur(5px);
-      &:hover, &:is(.active) {
+
+      &:hover,
+      &:is(.active) {
         box-shadow: var(--box-shadow), 0 0 0 1px var(--list-hover-bg);
       }
+
       &__list {
         position: relative;
         display: flex;
@@ -299,6 +348,7 @@
         padding-inline: 0.35rem 1rem;
         border-radius: var(--border-radius);
         cursor: pointer;
+
         i {
           height: inherit;
           aspect-ratio: 1;
@@ -306,11 +356,13 @@
           display: grid;
           place-items: center;
         }
+
         &:is(.active) {
           font-weight: 700;
           background-color: var(--list-hover-bg);
           color: var(--list-hover-color);
         }
+
         &:not(.active):hover {
           background-color: var(--primary-100);
           color: var(--list-hover-bg);

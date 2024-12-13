@@ -81,6 +81,83 @@
               white-space: nowrap;
               display: block;
             }
+            .airport-code {
+              --pointer-size: 8px;
+              --block-height: 28px;
+              position: absolute;
+              inset-block-start: calc(100% + var(--pointer-size));
+              inset-inline-start: calc(0px - var(--pointer-size) / 2);
+              background-color: var(--secondary);
+              color: var(--secondary-color);
+              height: var(--block-height);
+              padding-inline: 0.7rem;
+              padding-block: 0.15rem;
+              font-family: var(--merriweather-font);
+              line-height: normal;
+              font-weight: 700;
+              border-radius: var(--border-radius);
+              isolation: isolate;
+              &::after {
+                content: "";
+                position: absolute;
+                width: var(--pointer-size);
+                height: var(--pointer-size);
+                background-color: inherit;
+                rotate: 45deg;
+                z-index: -1;
+                inset-inline-start: 12%;
+                inset-block-end: calc(100% - (var(--pointer-size) / 2));
+              }
+              &:is(.top) {
+                inset-block-start: initial;
+                inset-block-end: calc(100% + var(--pointer-size));
+                &::after {
+                  inset-block-end: initial;
+                  inset-block-start: calc(100% - (var(--pointer-size) / 2));
+                }
+              }
+              &:is(.right) {
+                inset-inline-start: initial;
+                inset-inline-end: calc(0px - var(--pointer-size) / 2);
+                &::after {
+                  inset-inline-start: initial;
+                  inset-inline-end: 12%;
+                }
+                &:is(.middle) {
+                  inset-inline-end: initial;
+                  inset-inline-start: calc(100% + var(--pointer-size));
+                  inset-block-start: calc(50% - (var(--block-height) / 2));
+                  &::after {
+                    inset-inline-start: initial;
+                    inset-inline-end: calc(100% - (var(--pointer-size) / 2));
+                    inset-block-start: calc(50% - (var(--pointer-size) / 2));
+                  }
+                }
+              }
+              &:is(.left) {
+                inset-inline-start: initial;
+                // inset-inline-end: calc(100% + var(--pointer-size) / 2);
+                &::after {
+                  inset-inline-start: initial;
+                  inset-inline-end: 12%;
+                }
+                &:is(.middle) {
+                  inset-inline-end: initial;
+                  inset-inline-end: calc(100% + var(--pointer-size));
+                  inset-block-start: calc(50% - (var(--block-height) / 2));
+                  &::after {
+                    inset-inline-start: calc(100% - (var(--pointer-size) / 2));
+                    // inset-inline-end: calc(100% - (var(--pointer-size) / 2));
+                    inset-block-start: calc(50% - (var(--pointer-size) / 2));
+                  }
+                }
+              }
+            }
+            &:hover .airport-code {
+              display: none;
+              z-index: 2;
+            }
+            
             .pointer {
               width: 100%;
               height: 100%;

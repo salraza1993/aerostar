@@ -18,25 +18,27 @@ interface AnchorDataTypes {
   }
 }
 interface AnchorCoordinates {
-  x: number;
-  y: number;
+  x: number,
+  y: number,
+  code: string,
+  anchorPosition: string,
 }
 export default function HomeRegionalMap({ data }: { data: AnchorDataTypes[] }) {
   const [anchors, setAnchors] = useState<AnchorDataTypes[]>(data);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [anchorCoordinates, setAnchorCoordinates] = useState<AnchorCoordinates[]>([
-    { x: 52, y: 13 },
-    { x: 47, y: 12 },
-    { x: 41, y: 5 },
-    { x: 70, y: 42 },
-    { x: 76, y: 36 },
-    { x: 65, y: 65 },
-    { x: 65, y: 80 },
-    { x: 78, y: 58 },
-    { x: 56, y: 50 },
-    { x: 48.5, y: 40 },
-    { x: 12, y: 1 },
-    { x: 29, y: 7 },
+    { x: 52, y: 13, code: 'CAI', anchorPosition: "right middle" },
+    { x: 47, y: 12, code: 'SPX', anchorPosition: "right" },
+    { x: 41, y: 5, code: 'HBE', anchorPosition: "right middle" },
+    { x: 70, y: 42, code: 'HRG', anchorPosition: "top right" },
+    { x: 76, y: 36, code: 'SSH', anchorPosition: "right middle" },
+    { x: 65, y: 65, code: 'LXR', anchorPosition: "" },
+    { x: 65, y: 80, code: 'ASW', anchorPosition: "" },
+    { x: 78, y: 58, code: 'RMF', anchorPosition: "right middle" },
+    { x: 56, y: 50, code: 'HMB', anchorPosition: "" },
+    { x: 48.5, y: 40, code: 'ATZ', anchorPosition: "left middle" },
+    { x: 12, y: 1, code: 'MUH', anchorPosition: "" },
+    { x: 29, y: 7, code: 'DBB', anchorPosition: "top" },
   ]);
   const elementStyles = (x: number, y: number): CustomCSSProperties => {
     return {
@@ -75,6 +77,11 @@ export default function HomeRegionalMap({ data }: { data: AnchorDataTypes[] }) {
   //   }
   // };
 
+  const getAirportCodeHandler = (event: string) => { 
+    const airportCode = event.split(' ')[0];
+    return airportCode;
+  }
+
   useEffect(() => {
     const updatedAnchors = anchors.map((item) => ({...item, selected: false}));
     setAnchors(updatedAnchors);
@@ -93,9 +100,8 @@ export default function HomeRegionalMap({ data }: { data: AnchorDataTypes[] }) {
             onMouseEnter={() => anchorHandler(anchor)}
             onClick={() => anchorHandler(anchor)}
           >
-            <span className="pointer">
-              {/* <small>{ anchor.node.title }</small> */}
-            </span>
+            <span className={`airport-code ${anchorCoordinates[index].anchorPosition}`}>{ getAirportCodeHandler(anchor.node.title) }</span>
+            <span className="pointer"></span>
             {
               anchor.selected && (
                 <div className="anchor-details">
