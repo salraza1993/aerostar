@@ -97,7 +97,6 @@
               font-weight: 700;
               border-radius: var(--border-radius);
               isolation: isolate;
-              
               pointer-events: none;
               &::after {
                 content: "";
