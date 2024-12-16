@@ -4,7 +4,10 @@ import "@/assets/scss/Pages/BlogPage/BlogPage.scss";
 import HomeClients from '@/app/components/Pages/HomePage/HomeClients';
 import { BlogCardDataType, GET_BLOG_PAGE_POSTS, GetBlogPagePostDataTypes } from '@/Interfaces/BlogPageQueries';
 import { graphqlRequest } from '@/lib/graphqlRequest';
-
+import { Metadata } from 'next';
+export const metadata: Metadata = {
+  title: "News",
+}
 
 export default async function BlogPage() {
   const response = await graphqlRequest<GetBlogPagePostDataTypes>(GET_BLOG_PAGE_POSTS);

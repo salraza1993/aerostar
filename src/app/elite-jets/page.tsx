@@ -4,7 +4,10 @@ import { graphqlRequest } from "@/lib/graphqlRequest";
 import { PageData } from "@/Interfaces/CommonTypes";
 import Image from "next/image";
 import "@/assets/scss/Pages/ElitePage/EliteJetsPage.scss";
-
+import { Metadata } from "next";
+export const metadata: Metadata = {
+  title: "Elite Jets",
+}
 export default async function page() {
   const response = await graphqlRequest<PageData<ElitePageDataTypes>>(GET_ELITE_PAGE_CONTENT);
   const data = response?.pages?.edges[0]?.node;

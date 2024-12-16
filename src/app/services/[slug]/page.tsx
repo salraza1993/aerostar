@@ -8,8 +8,12 @@ import { graphqlRequest } from '@/lib/graphqlRequest';
 import { FirstSectionDataType, GET_PAGE_CONTENT, SecondSectionDataType, ServicesDetailDataType } from '@/Interfaces/ServicePageQueries';
 import { HomeServiceCardQueryData } from '@/Interfaces/HomePageQueryTypes';
 import { GET_HOME_SERVICE_CARDS } from '@/Interfaces/HomePageQueries';
+import { Metadata } from 'next';
 
 type Params = { slug: string }
+export const metadata: Metadata = {
+  title: "Our Service Details",
+}
 export default async function ServiceDetails({ params }: { params: Params }) {
   const pageSlug: string = params.slug;
   const response = await graphqlRequest<ServicesDetailDataType>(GET_PAGE_CONTENT, { name: pageSlug });

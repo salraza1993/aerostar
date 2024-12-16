@@ -2,7 +2,10 @@ import { graphqlRequest } from '@/lib/graphqlRequest';
 import SubPageHeroBanner from '../components/common/SubPageHeroBanner'
 import { PageData } from '@/Interfaces/CommonTypes';
 import { GET_TERMS_CONDITIONS_CONTENT, GetPrivacyPoliciesDataTypes } from '@/Interfaces/SubPagesQueries';
-
+import { Metadata } from 'next';
+export const metadata: Metadata = {
+  title: "Terms and Conditions",
+}
 export default async function TermsAndConditionsPage() {
   const response = await graphqlRequest<PageData<GetPrivacyPoliciesDataTypes>>(GET_TERMS_CONDITIONS_CONTENT);
   const content = response?.pages?.edges[0]?.node?.content;

@@ -1,9 +1,13 @@
 import "@/assets/scss/Pages/BlogPage/BlogPage.scss";
 import { BlogDetailsDataType, GET_BLOG_POST_DATA } from "@/Interfaces/BlogPageQueries";
 import { graphqlRequest } from "@/lib/graphqlRequest";
+import { Metadata } from "next";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import Image from "next/image";
 // import RelatedArticles from "./RelatedArticles";
+export const metadata: Metadata = {
+  title: "News Details",
+}
 export default async function BlogDetails({ params }: { params: Params }) {
   const blogBannerFallback = '/images/slider-banner-1.jpg';
   const pageSlug: string = params.slug;  

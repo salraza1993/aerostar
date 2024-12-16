@@ -3,8 +3,12 @@ import '@/assets/scss/Pages/RegionalMaps/regionalMap.scss';
 
 import { GET_PAGE_CONTENT, GetAirportsDetailsQueryData } from "@/Interfaces/RegionalMapsQueries";
 import { graphqlRequest } from "@/lib/graphqlRequest";
+import { Metadata } from 'next';
 import Image from "next/image";
 type Params = { slug: string }
+export const metadata: Metadata = {
+  title: "Regional Maps Details",
+}
 
 export default async function page({ params }: { params: Params }) {
   const pageSlug: string = params.slug;

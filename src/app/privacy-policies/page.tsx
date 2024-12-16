@@ -2,7 +2,10 @@ import { graphqlRequest } from '@/lib/graphqlRequest';
 import SubPageHeroBanner from '../components/common/SubPageHeroBanner'
 import { PageData } from '@/Interfaces/CommonTypes';
 import { GET_PRIVACY_POLICIES_CONTENT, GetPrivacyPoliciesDataTypes } from '@/Interfaces/SubPagesQueries';
-
+import { Metadata } from 'next';
+export const metadata: Metadata = {
+  title: "Privacy Policies",
+}
 export default async function PrivacyPoliciesPage() {
   const response = await graphqlRequest<PageData<GetPrivacyPoliciesDataTypes>>(GET_PRIVACY_POLICIES_CONTENT);
   const content = response?.pages?.edges[0]?.node?.content;

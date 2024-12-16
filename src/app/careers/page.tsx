@@ -3,8 +3,12 @@ import SubPageHeroBanner from "../components/common/SubPageHeroBanner";
 import '@/assets/scss/Pages/CareerPage/CareerPage.scss';
 import { graphqlRequest } from "@/lib/graphqlRequest";
 import { PageData } from "@/Interfaces/CommonTypes";
+import { Metadata } from "next";
 type CareerPageQueryData = {
   content: string;
+}
+export const metadata: Metadata = {
+  title: "Career",
 }
 export default async function page() {
   const pageId: number = 317;
