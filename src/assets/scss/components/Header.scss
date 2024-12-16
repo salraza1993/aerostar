@@ -90,7 +90,8 @@
     .header-logo {
       position: relative;
       flex-shrink: 0;
-
+      max-width: 140px;
+      display: block;
       picture {
         display: block;
         height: var(--header-logo-height);
@@ -118,7 +119,6 @@
       font-family: var(--kanit-font);
       font-size: 1.1rem;
       width: 100%;
-      max-width: calc(65% + 5vw);
 
       &__list {
         position: relative;
