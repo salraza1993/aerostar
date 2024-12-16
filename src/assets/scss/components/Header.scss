@@ -92,10 +92,21 @@
       flex-shrink: 0;
       max-width: 140px;
       display: block;
+      @media screen and (width < #{$extraSmall}) {
+        max-width: 90px;
+      }
       picture {
         display: block;
+        max-width: inherit;
         height: var(--header-logo-height);
         @include objectFit($fit: contain);
+      }
+    }
+    @media screen and (width < #{$extraSmall}) {
+      .getAssistanceBtn {
+        font-size: 1rem;
+        --bs-btn-padding-x: 1rem;
+        --bs-btn-padding-y: 0.6rem;
       }
     }
   }
