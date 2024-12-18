@@ -21,7 +21,7 @@ export default function Header(): React.ReactElement {
             </div>
             <div className="block__end">
               <ThemeAndLang blockClass="hide-mobile" />
-              <Button className={"getAssistanceBtn"} type={'link'} path={'/contact#queryForm'} icon={'user-headset'} label={"Get Assistance"} color={'accent'} />
+              <Button type={'link'} path={'/contact#queryForm'} icon={'user-headset'} label={"Get Assistance"} color={'accent'} />
             </div>
           </div>
         </div>

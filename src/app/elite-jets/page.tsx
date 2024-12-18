@@ -3,8 +3,8 @@ import SubPageHeroBanner from "../components/common/SubPageHeroBanner";
 import { graphqlRequest } from "@/lib/graphqlRequest";
 import { PageData } from "@/Interfaces/CommonTypes";
 import Image from "next/image";
+import { Metadata } from 'next';
 import "@/assets/scss/Pages/ElitePage/EliteJetsPage.scss";
-import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Elite Jets",
 }

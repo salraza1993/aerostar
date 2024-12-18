@@ -9,7 +9,6 @@ type Params = { slug: string }
 export const metadata: Metadata = {
   title: "Regional Maps Details",
 }
-
 export default async function page({ params }: { params: Params }) {
   const pageSlug: string = params.slug;
   const response = await graphqlRequest<GetAirportsDetailsQueryData>(GET_PAGE_CONTENT, { name: pageSlug });

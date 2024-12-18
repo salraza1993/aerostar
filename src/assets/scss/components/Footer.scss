@@ -1,25 +1,5 @@
 @import './../mixins/common-mixins';
-@mixin anchorHover() {
-  position: relative;
-  &::after {
-    transition: var(--transition);
-    content: '';
-    position: absolute;
-    inset-block-start: calc(100% + 0.25rem);
-    inset-inline-end: 0;
-    width: 0;
-    height: 1px;
-    background-color: var(--accent);
-  }
 
-  &:hover {
-    color: var(--accent);
-    &:after {
-      width: 100%;
-      inset-inline-start: 0;
-    }
-  }
-}
 .main-footer {
   --footer-padding-y: calc(1rem + 1vw);
   position: relative;

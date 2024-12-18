@@ -1,5 +1,4 @@
 @import './../../mixins/common-mixins';
-
 :root {
   --block-padding: calc(1rem + 1vw);
   --overlay-extra-margin: calc(50px + 5vw);
@@ -8,15 +7,13 @@
 .service-page-card-sections {
   position: relative;
   padding-block: var(--block-padding);
-
   .service-page-card-content {
     --columns: 2;
     position: relative;
     display: grid;
     grid-template-columns: repeat(var(--columns), 1fr);
     gap: calc(var(--block-padding) / 1.5);
-
-    @media (width <=#{$medium}) {
+    @media (width <= #{$medium}) {
       --columns: 1;
     }
 
@@ -28,41 +25,34 @@
       overflow: clip;
       @include cardShadow();
       border-radius: calc(var(--border-radius) * 1.5);
-
-      @media (width <=#{$small}) {
+      @media (width <= #{$small}) {
         flex-direction: column;
       }
-
       &__image {
         position: relative;
         width: calc(200px + 1vw);
         flex-shrink: 0;
         @include objectFit();
-
-        @media (width <=#{$small}) {
+        @media (width <= #{$small}) {
           --image-height: 150px;
           width: 100%;
           height: var(--image-height);
         }
       }
-
       &__content {
         padding: var(--block-padding);
         display: flex;
         flex-direction: column;
-
         .title {
           font-family: var(--merriweather-font);
           font-weight: 800;
           color: var(--accent);
         }
-
         .btn {
           max-width: 100%;
           justify-content: center;
           margin-block-start: auto;
         }
-
         .description {
           margin-block-end: calc(var(--block-padding) / 1.25);
           @include multiline(5);
@@ -71,15 +61,13 @@
     }
   }
 }
-
-.services-special-section,
-.service-counters-section {
+.services-special-section, .service-counters-section {
   position: relative;
   padding-block-start: calc(var(--block-padding) * 1.5);
   padding-block-end: calc(var(--overlay-extra-margin) + var(--block-padding));
   color: var(--bs-white);
   isolation: isolate;
-
+  
   &::before,
   &::after {
     content: '';
@@ -89,8 +77,7 @@
     z-index: -1;
     border-radius: calc(var(--border-radius) * 3);
     pointer-events: none;
-
-    @media (width <=#{$medium}) {
+    @media (width <= #{$medium}) {
       inset: 0;
       border-radius: 0;
     }
@@ -105,13 +92,9 @@
     opacity: 0.15;
     z-index: 0;
   }
-
-  .services-special-content,
-  .service-counters-content {
+  .services-special-content, .service-counters-content {
     position: relative;
-
-    .counters-list,
-    .service-counters {
+    .counters-list, .service-counters {
       position: relative;
       width: 100%;
       margin: 0;
@@ -119,14 +102,12 @@
       list-style: none;
       display: flex;
       justify-content: space-around;
-
-      @media (width <=#{$medium}) {
+      @media (width <= #{$medium}) {
         justify-content: center;
         gap: 0.6rem;
         flex-wrap: wrap;
       }
-
-      @media (width <=#{$small}) {
+      @media (width <= #{$small}) {
         flex-wrap: nowrap;
         justify-content: flex-start;
         overflow-x: scroll;
@@ -135,29 +116,21 @@
         margin-inline-start: calc(0px - var(--mobile-padding));
         padding-inline: var(--mobile-padding);
       }
-
       &__item {
         position: relative;
         display: flex;
         flex-direction: column;
         align-items: center;
         text-align: center;
-
         @media (width <=#{$medium}) {
           border: 1px solid rgba(var(--bs-white-rgb), 0.2);
           background-color: rgba(var(--bs-white-rgb), 0.05);
           border-radius: var(--border-radius);
         }
-
-        @media (width <=#{$medium}) {
-          flex-basis: 175px;
-          flex-grow: 1;
-        }
-
-        @media (width <=#{$small}) {
+        @media (width <= #{$medium}) { flex-basis: 175px; flex-grow: 1; }
+        @media (width <= #{$small}) { 
           min-width: 175px;
         }
-
         .__icon {
           width: 50px;
           aspect-ratio: 1;
@@ -166,12 +139,8 @@
           align-items: center;
           margin-block-end: 0.5rem;
           @include objectFit($fit: contain);
-
-          i {
-            margin: auto;
-          }
+          i { margin: auto;}
         }
-
         .__counter {
           font-weight: 600;
           font-family: var(--kanit-font);
@@ -185,10 +154,8 @@
   position: relative;
   z-index: 1;
   padding-block-end: var(--block-padding);
-
   .form-container-content {
     position: relative;
-
     .form-container {
       background-color: var(--primary-100);
       width: 100%;
@@ -199,7 +166,6 @@
       // margin-block-start: calc(0px - calc(var(--overlay-extra-margin) / 1.15));
       @include cardShadow();
       padding: var(--block-padding);
-
       .contact-form {
         margin-block-start: calc(var(--block-padding) / 1.5);
         background-color: var(--body-bg);
@@ -214,47 +180,39 @@
   --box-margins: -0.25px;
   position: relative;
   padding-block: calc(var(--block-padding) * 2);
-
-  @media (width <=#{$medium}) {
-    padding-block: calc(var(--block-padding) * 1);
-
+  @media (width <= #{$medium}) {
+    padding-block: calc(var(--block-padding) * 1);    
     .content {
       margin-block-end: 1rem;
     }
   }
-
   @media screen and (width < #{$small}) {
-    --box-margins: calc(0px - var(--mobile-padding));
+      --box-margins: calc(0px - var(--mobile-padding));
   }
 
   .services-details {
-    &__content {
-      position: relative;
+    &__content { 
+      position: relative; 
     }
-
     &__image {
       position: relative;
       max-width: 500px;
       margin-inline: auto;
-
       @media (width <=#{$medium}) {
         margin-block-start: calc(var(--block-padding) * 2);
         margin-block-end: calc(var(--block-padding) * 1);
       }
-
       .__image {
         position: relative;
         width: 100%;
         aspect-ratio: 1 * 1.3;
-        flex-shrink: 0;
+        flex-shrink: 0;                     
         background-color: red;
         border-radius: calc(var(--border-radius) * 2);
         @include objectFit();
         @include cardShadow();
       }
-
-      &::before,
-      &::after {
+      &::before, &::after {
         content: '';
         position: absolute;
         width: 60%;
@@ -266,13 +224,11 @@
         opacity: 0.5;
         z-index: -1;
       }
-
       &::before {
         width: 40%;
         inset-block-start: var(--box-margins);
         inset-inline-start: var(--box-margins);
       }
-
       &::after {
         inset-block-end: var(--box-margins);
         inset-inline-end: var(--box-margins);
@@ -294,11 +250,10 @@
     display: grid;
     grid-template-columns: repeat(var(--column-grid), 1fr);
     gap: calc(var(--block-padding) / 1.5);
-
-    @media (width <=#{$medium}) {
+    
+    @media (width <= #{$medium}) {
       --column-grid: 2;
     }
-
     @media (width <=#{$small}) {
       display: flex;
       flex-wrap: nowrap;
@@ -308,17 +263,14 @@
       padding-inline: var(--mobile-padding);
       padding-block: 0 10px;
     }
-
     .services-points-card {
       position: relative;
       padding: calc(var(--block-padding) / 1.25);
       border-radius: calc(var(--border-radius) * 1.5);
       background-color: var(--primary-100);
-
       @media (width <=#{$small}) {
         min-width: 75vw;
       }
-
       &__icon {
         position: relative;
         width: 80px;
@@ -332,11 +284,7 @@
         color: var(--accent);
         margin-block-end: calc(var(--block-padding) / 1.5);
       }
-
-      p:last-child {
-        margin: 0;
-      }
-
+      p:last-child { margin: 0; }
       .title {
         font-family: var(--merriweather-font);
         font-weight: 700;

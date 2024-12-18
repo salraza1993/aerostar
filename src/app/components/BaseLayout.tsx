@@ -20,8 +20,8 @@ export default function BaseLayout({ children }: Props) {
  
   return (
     <html lang="en">
-      <meta name="theme-color" media="(prefers-color-scheme: light)" content="#2A2C75" />
-      <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#5DB869" />
+      <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2A2C75" />
+      <meta name="theme-color" media="(prefers-color-scheme: light)" content="#5DB869" />
       <body className={bodyFonts}>
         <Header />
           {children}

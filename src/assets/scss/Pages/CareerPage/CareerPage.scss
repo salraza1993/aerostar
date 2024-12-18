@@ -1,31 +1,233 @@
 @import './../../mixins/common-mixins';
+:root {
+  --block-padding: calc(1rem + 1vw);
+  --content-max-width: 1170px;
+  --detail-content-max-width: 1000px;
+  --card-padding-x: calc(var(--block-padding) / 1.5);
+  --card-padding-y: calc(var(--block-padding) / 1.75);
+  @media screen and (width < #{$small}) {
+    --block-padding: var(--mobile-padding);
+  }
+}
 
-.career-page-section {
-  --block-padding-y: calc(1rem + 1vw);
+.career-page-section {  
   position: relative;
-  padding-block-end: calc(var(--block-padding-y) * 2);
-
+  padding-block-start: calc(var(--block-padding) * 2);
+  padding-block-end: calc(var(--block-padding) / 1.25);
+  
   .career-page-content {
     position: relative;
     display: flex;
-    justify-content: center;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    gap: var(--block-padding-y);
-    max-width: 990px;
+    gap: var(--block-padding);
+    max-width: var(--content-max-width);
     margin-inline: auto;
+    &::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background-color: var(--accent);
+      inset-inline-start: 0;
+      inset-block-end: 0;
+    }
+    .__text {
+      max-width: 55%;
+      > h1, h2, h3, h4, h5 {
+        font-family: var(--merriweather-font);
+        font-weight: 700;
+      }
+    }
     .__image {
       position: relative;
-      width: 400px;
-      height: 300px;
+      width: auto;
+      max-width: 450px;
       @include objectFit($fit: contain);
+      @include NextImgReset();
+    }
+    @media screen and (width < #{$small}) {
+      flex-direction: column;
+      .__text {
+        max-width: 100%;
+      }
+    }
+  }
+  
+  .job-cards-wrapper {
+    position: relative;
+    margin-inline: auto;
+    padding-block: calc(var(--block-padding) * 1.5);
+    max-width: var(--content-max-width);
+    .job-card {
+      background-color: var(--primary-100);
+      padding-inline: var(--card-padding-x);
+      padding-block: var(--card-padding-y);
+      border-radius: calc(var(--border-radius) * 2);
+      @include cardShadow();
+      .title {
+        font-family: var(--merriweather-font);
+        font-weight: 700;
+        color: var(--secondary);
+      }
+      .description p { font-size: 1rem; line-height: normal; }
+      &:not(:last-child) {
+        margin-block-end: calc(var(--block-padding) / 1.5);
+      }
+      .__footer {
+        display: flex;
+        gap: 0.75rem;
+        margin-block-start: 1.25rem;
+        @media screen and (width < #{$small}) {
+          flex-wrap: wrap;
+          .btn {
+            max-width: 100%;
+            width: 100%;
+            justify-content: center;
+          }
+        }
+      }
+    }
+  }
+}
+.list {
+  font-size: 0.98rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: calc(var(--card-padding-y) / 1.25) 0;
+  padding-inline: calc(var(--card-padding-y) / 1.5);
+  padding-block: calc(var(--card-padding-y) / 2);
+  background-color: var(--primary-200);
+  border-radius: var(--border-radius);
+  row-gap: calc(var(--card-padding-y) / 2);
+  @media screen and (width < #{$small}) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &__item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.25rem;
+
+    .__value {
+      font-weight: 600;
+    }
+
+    &:not(:last-child)::after {
+      content: '';
+      display: inline-block;
+      width: 1px;
+      height: 18px;
+      margin-inline: 1rem;
+      background-color: var(--border-color);
+      @media screen and (width < #{$small}) {
+        display: none;
+      }
+    }
+  }
+}
+
+.job-details-section {
+  position: relative;
+  padding-block: calc(var(--block-padding) * 1);
+  .job-details-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: var(--detail-content-max-width);
+    margin-inline: auto;
+    overflow: clip;
+    border-radius: calc(var(--border-radius) * 2);
+    background-color: var(--primary-100);
+    @include cardShadow();
+    &__header {
+      position: relative;
+      width: 100%;
+      background-color: var(--secondary);
+      @include NextImgReset();
+      @include objectFit($fit: cover);
+      @media screen and (width < #{$small}) {
+        height: 85px;
+        .title {
+          max-width: 80%;
+        }
+      }
+      .title {
+        position: absolute;
+        z-index: 1;
+        inset-inline-start: 0;
+        inset-block-start: 0;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        padding: var(--block-padding);
+        color: var(--bs-white);
+        text-wrap: balance;
+      }
+    }
+    &__body {
+      padding-block-start: var(--block-padding);
+      padding-inline: calc(var(--block-padding) * 1.5);
+      .list {
+        margin-block-start: calc(0px - var(--block-padding) / 2);
+        margin-inline: calc(0px - var(--block-padding));
+        font-size: initial;
+        @media screen and (width < #{$small}) {
+          margin-block-start: calc(0px - var(--block-padding) / 1);
+          margin-inline: calc(0px - var(--block-padding)* 1.5);
+          font-size: initial;
+          padding: var(--mobile-padding);
+          border-radius: 0;
+        }
+      }
+      ul:not(.list) {
+        list-style: disc;
+        margin-block-start: 0;
+        margin-inline: 0;
+        padding-inline: calc(var(--block-padding) / 2);
+        li {
+          margin-block-start: 0.5rem;
+          line-height: normal;
+        }
+      }
+    }
+    &__footer {
+      position: relative;
+      width: 100%;
+      isolation: isolate;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: calc(var(--block-padding) / 1);
+
+      .email {
+        color: var(--accent);
+        transition: var(--transition);
+        display: inline-block;
+        margin-block-start: 0.5rem;
+        @include anchorHover();
+        &::before {
+          transition: var(--transition);
+          content: '';
+          position: absolute;
+          inset-block-start: calc(100% + 0.25rem);
+          inset-inline-end: 0;
+          width: 100%;
+          height: 1px;
+          background-color: var(--secondary);
+        }
+      }
       &::after {
         content: '';
         position: absolute;
-        width: 100px;
-        height: 2px;
-        background-color: var(--accent);
-        inset-inline-start: calc(50% - 50px);
+        inset: calc(var(--block-padding) / 3);
+        background-color: var(--primary-200);
+        z-index: -1;
+        border-radius: var(--border-radius);
       }
     }
   }

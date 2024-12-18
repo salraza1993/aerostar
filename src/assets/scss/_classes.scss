@@ -1,11 +1,35 @@
 @import './mixins/common-mixins';
-.text-primary {
+.text-primary, .primary {
   color: var(--accent) !important;
+  &-100, &--100 { color: var(--primary-100) !important; }
+  &-200, &--200 { color: var(--primary-200) !important; }
+  &-300, &--300 { color: var(--primary-300) !important; }
+  &-300, &--300 { color: var(--primary-300) !important; }
+}
+.text-accent, .accent-bg, .accent {
+  color: var(--accent) !important;
+  &-25, &--25 { color: var(--accent-25) !important; }
+  &-50, &--50 { color: var(--accent-50) !important; }
+  &-100, &--100 { color: var(--accent-100) !important; }
+  &-150, &--150 { color: var(--accent-150) !important; }
+  &-200, &--200 { color: var(--accent-200) !important; }
+}
+.accent-color {
+  color: var(--accent-color) !important;
 }
 
-.text-secondary {
+.text-secondary, .secondary {
   color: var(--secondary) !important;
+  &-25, &--25 { color: var(--secondary-25) !important; }
+  &-50, &--50 { color: var(--secondary-50) !important; }
+  &-100, &--100 { color: var(--secondary-100) !important; }
+  &-150, &--150 { color: var(--secondary-150) !important; }
+  &-200, &--200 { color: var(--secondary-200) !important; }
 }
+.secondary-color {
+  color: var(--secondary-color) !important;
+}
+
 .svg-primary { color: var(--svg-primary) !important; } 
 .svg-secondary { color: var(--svg-secondary) !important; }
 .svg-accent--dark { color: var(--svg-accent--dark) !important; } 

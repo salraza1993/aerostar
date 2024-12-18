@@ -1,8 +1,10 @@
 @import './../../mixins/common-mixins';
+
 :root {
   --block-padding: calc(1rem + 1vw);
   --content-width: 1200px;
 }
+
 .regional-map-section {
   position: relative;
   padding-block: var(--block-padding);
@@ -13,6 +15,7 @@
     gap: 1rem;
     max-width: 900px;
     margin-inline: auto;
+
     .regional-map-card {
       background-color: var(--primary-100);
       border: 1px solid var(--border-color);
@@ -20,28 +23,36 @@
       display: flex;
       border-radius: calc(var(--border-radius) * 1.5);
       overflow: clip;
+
       @media screen and (max-width: 768px) {
         flex-direction: column-reverse;
         padding: 0;
       }
+
       .content-block {
-        &__start, &__end {
+
+        &__start,
+        &__end {
           position: relative;
         }
+
         &__end {
           flex-shrink: 0;
           width: 40%;
           background-color: var(--border-color);
           display: flex;
+
           @media screen and (max-width: 768px) {
             width: 100%;
             height: 110px;
           }
+
           .regional-map {
             position: relative;
             width: 100%;
             height: 100%;
             background-color: #636366;
+
             iframe {
               width: 100%;
               height: 100%;
@@ -50,11 +61,14 @@
             }
           }
         }
+
         &__start {
           padding: calc(var(--block-padding) / 1.5);
+
           @media screen and (max-width: 768px) {
             padding: var(--mobile-padding);
           }
+
           .filters {
             position: relative;
             display: flex;
@@ -63,6 +77,7 @@
             margin-block-end: 1rem;
             padding: 0;
             gap: 0.5rem;
+
             &__list {
               position: relative;
               width: 45px;
@@ -80,11 +95,15 @@
     }
   }
 }
+
 .regional-map-detains {
-  &-section, &-content {
+
+  &-section,
+  &-content {
     position: relative;
   }
-  &-content { 
+
+  &-content {
     padding-block: var(--block-padding);
     max-width: var(--content-width);
     margin-inline: auto;
@@ -97,6 +116,7 @@
       border-radius: calc(var(--border-radius) * 1.5);
       overflow: clip;
       margin-block-start: var(--block-padding);
+
       iframe {
         width: 100%;
         height: 100%;
@@ -109,6 +129,7 @@
   position: relative;
   width: 100%;
   padding-block-start: calc(var(--block-padding) / 2);
+
   &__content {
     width: 100%;
     max-width: var(--content-width);
@@ -116,6 +137,7 @@
     display: flex;
     flex-direction: column;
     gap: calc(var(--block-padding) * 1);
+
     .hero-banner-image {
       position: relative;
       border-radius: calc(var(--border-radius) * 2);

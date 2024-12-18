@@ -1,38 +1,31 @@
 @import './../../mixins/common-mixins';
-
 :root {
-  --block-padding: calc(1rem + 1vw);
+  --block-padding: calc(1rem + 1vw); 
 }
-
 .about-1st-section {
   position: relative;
   padding-block: var(--block-padding);
-
   .about-1st__content {
     position: relative;
-
+    
     .about-section {
       &__text {
         position: relative;
-
         .title {
           font-family: var(--merriweather-font);
           font-weight: 800;
           color: var(--secondary);
         }
-
         .cta-button {
           margin-block-start: var(--block-padding);
         }
       }
-
       &__image {
         position: relative;
         width: 100%;
         aspect-ratio: 1/0.8;
         @include objectFit($fit: contain);
-
-        @media (width <=#{$medium}) {
+        @media (width <= #{$medium}) {
           margin-block-start: 1rem;
         }
       }
@@ -47,19 +40,16 @@
   --card-content-margin: calc(0px - var(--card-height));
   --heading-margin: 0;
   --card-gradient: linear-gradient(to bottom, rgba(var(--bs-dark-rgb), 0) 0%, rgba(var(--bs-dark-rgb), 1) 100%);
-
-  @media (width <=#{$medium}) {
-    --card-width: calc(250px + 3vw);
+  @media (width <= #{$medium}) {
+    --card-width: calc(250px + 3vw);    
     --card-height: 350px;
   }
-
   position: relative;
   width: 100%;
   padding-block-end: var(--block-padding);
-
   .about-services-content {
     position: relative;
-
+    
     .about-services-cards {
       position: relative;
       display: flex;
@@ -67,14 +57,12 @@
       pointer-events: none;
       margin: 0;
       padding: 0;
-
       @media (width <=#{$small}) {
         overflow-x: scroll;
         width: 100vw;
         margin-inline-start: calc(0px - var(--mobile-padding));
         padding-inline: var(--mobile-padding);
       }
-
       &__list {
         pointer-events: auto;
         position: relative;
@@ -86,12 +74,10 @@
         color: var(--bs-white);
         width: 0;
         max-width: var(--card-width);
-
         .title {
           font-family: var(--merriweather-font);
           font-weight: 900;
         }
-
         .heading {
           position: absolute;
           inset: 0;
@@ -103,21 +89,18 @@
           margin-inline-start: var(--heading-margin);
           transition: var(--transition);
           transition-delay: 0;
-
           .title {
             position: relative;
             writing-mode: tb;
             rotate: 180deg;
           }
         }
-
         .__image {
           position: relative;
           width: 100%;
           height: 100%;
           @include objectFit($fit: cover);
           transition: var(--transition);
-
           &:after {
             content: '';
             position: absolute;
@@ -127,7 +110,6 @@
             transition: var(--transition);
           }
         }
-
         .__content-wrapper {
           position: absolute;
           z-index: 1;
@@ -135,7 +117,7 @@
           display: flex;
           align-items: flex-end;
           color: var(--bs-white);
-
+         
           .__content {
             transition: var(--transition);
             margin-block-end: var(--card-content-margin);
@@ -145,49 +127,36 @@
             transition-delay: 0;
           }
         }
-
         .description {
           position: relative;
           @include multiline(3);
           margin-block-end: 1rem;
         }
-
-        &:hover,
-        &:focus-within,
-        &:is(.active) {
+        &:hover, &:focus-within, &:is(.active)  {
           --card-content-margin: 0;
           --heading-margin: calc(-100% - (var(--card-padding) * 5));
           --card-gradient: linear-gradient(to bottom, rgba(var(--bs-dark-rgb), 0) 0%, rgba(var(--bs-dark-rgb), 1) 100%);
           width: var(--card-width);
           transition-delay: 100ms;
-
-          .heading {
-            opacity: 0;
-            transition-delay: 100ms;
-          }
-
-          .__content-wrapper .__content {
-            transition-delay: 250ms;
-          }
+          .heading { opacity: 0; transition-delay: 100ms; }
+          .__content-wrapper .__content { transition-delay: 250ms; }
         }
-
-        @media (width <=#{$small}) {
+        @media (width <= #{$small}) {
           --card-content-margin: 0;
           --heading-margin: calc(-100% - (var(--card-padding) * 5));
           --card-gradient: linear-gradient(to bottom, rgba(var(--bs-dark-rgb), 0) 0%, rgba(var(--bs-dark-rgb), 1) 100%);
           width: var(--card-width);
           transition-delay: 100ms;
-
+        
           .heading {
             opacity: 0;
             transition-delay: 100ms;
           }
-
+        
           .__content-wrapper .__content {
             transition-delay: 250ms;
           }
         }
-
         & .__image {
           position: relative;
           width: 100%;
@@ -205,13 +174,11 @@
   --map-margin-height: calc(var(--map-height) / 2);
   position: relative;
   padding-block-end: var(--block-padding);
-
   @media screen and (width < #{$small}) {
     --map-height: auto;
     --icon-size: 70px;
     padding-block-end: 0;
-
-    .mission-vision-content {
+    .mission-vision-content { 
       flex-direction: column;
       margin-block-end: var(--block-padding);
     }
@@ -226,7 +193,6 @@
     position: relative;
     display: flex;
     gap: var(--block-padding);
-
     .mission-vision-box {
       position: relative;
       background-color: var(--primary-100);
@@ -239,34 +205,23 @@
       gap: 1rem;
       gap: var(--block-padding);
       min-width: 35%;
-
       &__header {
         display: flex;
         align-items: center;
         gap: var(--block-padding);
-
         .__icon {
           width: var(--icon-size);
           @include objectFit($fit: contain);
         }
 
-        .title {
+        .title { 
           max-width: min-content;
           font-family: var(--merriweather-font);
-
-          strong {
-            font-weight: 800;
-            color: var(--secondary);
-          }
-
+          strong { font-weight: 800; color: var(--secondary); }
           text-wrap: wrap;
-
-          h3 {
-            margin: 0;
-          }
+          h3 { margin: 0; }
         }
       }
-
       &__body {
         @include multiline(8)
       }
@@ -291,8 +246,7 @@
       background-color: var(--secondary);
       z-index: -1;
       border-radius: calc(var(--border-radius) * 3);
-
-      @media (width <=#{$medium}) {
+      @media (width <= #{$medium}) {
         inset: 0;
         border-radius: 0;
       }
@@ -335,13 +289,7 @@
           flex-direction: column;
           align-items: center;
           gap: calc(var(--block-padding) / 2);
-
-          p {
-            &:last-child {
-              margin: 0;
-            }
-          }
-
+          p { &:last-child { margin: 0; }}
           &__icon {
             width: 90px;
             aspect-ratio: 1;
@@ -360,13 +308,11 @@
             text-wrap: balance;
           }
         }
-
-        @media (width <=#{$small}) {
+        @media (width <= #{$small}) {
           width: 100vw;
           margin-inline: calc(0px - var(--mobile-padding));
           padding-inline: var(--mobile-padding);
           overflow-x: scroll;
-
           .features-card {
             min-width: 75vw;
             background-color: rgba(var(--bs-white-rgb), 0.1);

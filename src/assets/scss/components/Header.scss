@@ -92,9 +92,11 @@
       flex-shrink: 0;
       max-width: 140px;
       display: block;
+
       @media screen and (width < #{$extraSmall}) {
         max-width: 90px;
       }
+
       picture {
         display: block;
         max-width: inherit;
@@ -102,6 +104,7 @@
         @include objectFit($fit: contain);
       }
     }
+
     @media screen and (width < #{$extraSmall}) {
       .getAssistanceBtn {
         font-size: 1rem;
